@@ -1,0 +1,2374 @@
+<?xml version='1.0' encoding='utf-8'?>
+<root>
+    <world>
+        <background/>
+        <walls>
+            <wall begin="0:0" id="{040de144-7a6f-4afb-aac7-f4be1da696ed}" end="0:200"/>
+            <wall begin="1200:800" id="{08b6d0a6-af74-4fca-8a80-9aaabf47bd5c}" end="1400:800"/>
+            <wall begin="1200:200" id="{0a593dfe-e2e3-4db5-a44a-94ea722cc61d}" end="1400:200"/>
+            <wall begin="200:1400" id="{0c14da03-43c2-420b-b7e2-350ef68e383f}" end="350:1400"/>
+            <wall begin="400:600" id="{1966207d-be96-4c9c-a807-21589d8fc5b0}" end="400:800"/>
+            <wall begin="1200:1400" id="{1b388fbd-e5e0-4793-825a-ae388b17964d}" end="1200:1200"/>
+            <wall begin="600:400" id="{1dc68a12-339b-4c47-b1a0-7d0302395643}" end="600:600"/>
+            <wall begin="0:1000" id="{1f62c201-8723-425c-99e0-7fc78d10d47e}" end="0:1200"/>
+            <wall begin="800:1400" id="{25dd8e73-52d0-433a-80d5-10a1098ae7c7}" end="1000:1400"/>
+            <wall begin="800:0" id="{2874bbda-b5e5-4260-863d-0147f6292377}" end="1000:0"/>
+            <wall begin="1400:600" id="{3c0fc77d-99bf-4596-9ff2-bcc22a000dec}" end="1400:400"/>
+            <wall begin="400:1000" id="{40816494-e490-4112-a84b-6827411fc64f}" end="200:1000"/>
+            <wall begin="200:1600" id="{448d7415-a1d6-4449-ab18-6cd8c70fc077}" end="200:1400"/>
+            <wall begin="600:800" id="{48ede5a9-783a-437c-b6d4-c95cf358937f}" end="800:800"/>
+            <wall begin="1400:1400" id="{4d963a03-6f84-409d-a9d7-16da88094f98}" end="1200:1400"/>
+            <wall begin="0:1600" id="{4eea2523-0262-471e-80a8-c6b7aa153b01}" end="350:1600"/>
+            <wall begin="1400:800" id="{5666c708-c4f6-47b0-a1bc-d1ea861e7ce6}" end="1400:1000"/>
+            <wall begin="1200:0" id="{56b522a3-5c7c-46e2-bfbc-cd9c2ff7b09e}" end="1600:0"/>
+            <wall begin="1000:400" id="{56d86238-8521-494b-84cf-3b0703950e0b}" end="800:400"/>
+            <wall begin="0:200" id="{58e93446-e01b-4467-ac81-aa74f657032d}" end="0:400"/>
+            <wall begin="1000:1200" id="{599c27b5-7a59-463c-9fd8-78c1b0d60e74}" end="800:1200"/>
+            <wall begin="1600:1600" id="{6259eff6-f304-44b2-adaa-7a0cb6e9b25f}" end="350:1600"/>
+            <wall begin="0:800" id="{66fbb1bc-9b68-4372-b662-0df09cdcfce7}" end="0:1000"/>
+            <wall begin="400:1200" id="{676d673a-5c1c-4b3e-94c9-2b52fe9e7af5}" end="400:1000"/>
+            <wall begin="0:400" id="{69c7c389-2d66-4f30-b457-0b97ce171f1d}" end="0:600"/>
+            <wall begin="1600:0" id="{6c9a8506-c0dc-48bb-97c2-f6b87eb73d07}" end="1600:400"/>
+            <wall begin="1200:3200" id="{72ae5ff8-5f50-414f-8a74-bdf530ed760c}" end="4400:3200"/>
+            <wall begin="200:400" id="{789998a4-66d3-4b75-a0f1-fc374acc6a6f}" end="200:200"/>
+            <wall begin="600:200" id="{79b5d10f-39c2-4f7c-9fd9-3eb2699b4f44}" end="600:400"/>
+            <wall begin="600:0" id="{89bde907-f287-4caf-81c2-51a4ac98550f}" end="800:0"/>
+            <wall begin="0:600" id="{8d7fa5f1-3d4c-42aa-b34f-e90ebfeb39f9}" end="0:800"/>
+            <wall begin="200:0" id="{8e0cb31e-f24f-41ce-b44a-37951d29d651}" end="400:0"/>
+            <wall begin="800:1200" id="{8e9f8a60-22e1-4358-a148-27b85a957b1a}" end="800:1000"/>
+            <wall begin="600:1200" id="{8ffe3673-06cd-4e38-9504-b5794adea4da}" end="800:1200"/>
+            <wall begin="400:1400" id="{911eb093-1be6-4c8e-9835-8d1ea7606354}" end="400:1600"/>
+            <wall begin="1200:1000" id="{92ad181d-f79c-4e2f-a986-1725831389e9}" end="1200:800"/>
+            <wall begin="600:1000" id="{9354eb41-4fd1-464b-8153-a84c5ac88581}" end="600:1200"/>
+            <wall begin="1400:200" id="{951d413b-d67d-4e1a-adbf-cec5a649cd35}" end="1400:0"/>
+            <wall begin="200:200" id="{98dabd18-a080-4e28-b9d1-129721b2c67b}" end="400:200"/>
+            <wall begin="800:1000" id="{9b04c6bb-0e01-4bb4-ae65-7f7aea87c419}" end="600:1000"/>
+            <wall begin="1000:200" id="{9fcd364e-1aa1-4f37-a8db-8ff676f4d383}" end="1000:400"/>
+            <wall begin="0:0" id="{aaabe6ec-8c84-4d9e-a005-99b5fb37d153}" end="200:0"/>
+            <wall begin="1600:1000" id="{aef47fd5-ed95-41a8-9833-c4b7753c015a}" end="1600:400"/>
+            <wall begin="800:600" id="{b0d27649-3378-4ae5-bac4-f6ae3ed032eb}" end="800:800"/>
+            <wall begin="1000:1400" id="{b4c10b66-32ec-4048-adb0-d20ac524d84b}" end="1000:1200"/>
+            <wall begin="400:800" id="{b89afd2f-a716-4d38-8cf6-958a50410c69}" end="200:800"/>
+            <wall begin="1200:200" id="{b91dbaaa-a8c1-43ae-8ac0-a4eb7286045b}" end="1200:0"/>
+            <wall begin="1200:600" id="{b991d342-87fa-4147-9b01-d58d46dbf105}" end="1400:600"/>
+            <wall begin="600:600" id="{be886d58-9c7f-489c-af71-bb66f834fa78}" end="600:800"/>
+            <wall begin="800:800" id="{bf89c352-d738-425d-b21d-f3eceac55630}" end="1000:800"/>
+            <wall begin="1200:1200" id="{bfd3ecf9-da76-4b8d-9fee-7fe9e8fefa56}" end="1400:1200"/>
+            <wall begin="200:1000" id="{c07a1bd3-04b0-49fa-a0f3-666f2595f353}" end="200:1200"/>
+            <wall begin="1000:1400" id="{c3c2f915-2cbe-453b-afc0-0d19147e0cb0}" end="1200:1400"/>
+            <wall begin="350:1400" id="{c408aa3b-2c76-437c-9f59-a69fcb3d8ceb}" end="400:1400"/>
+            <wall begin="200:800" id="{c8569bfa-2a53-431c-bb1e-b903053013b2}" end="200:600"/>
+            <wall begin="1000:0" id="{d8f2ac0c-c426-4ca9-83fa-72ad0733dbbc}" end="1200:0"/>
+            <wall begin="1200:400" id="{d99630c8-d65f-4f08-be3d-65645cf96a5d}" end="1200:600"/>
+            <wall begin="800:400" id="{db8a70ee-85bb-4e3d-8cd2-e0057a1c2502}" end="800:200"/>
+            <wall begin="1600:1000" id="{de654a82-30ad-4296-a1ad-40e07030a493}" end="1600:1600"/>
+            <wall begin="1000:600" id="{df0c339b-2932-4ea9-b5af-c9b6cdad3023}" end="800:600"/>
+            <wall begin="400:400" id="{df4afcf7-f7d5-4849-9ab9-292575947c79}" end="200:400"/>
+            <wall begin="1400:1000" id="{e344dceb-83cb-4f87-948e-d36c07de3812}" end="1600:1000"/>
+            <wall begin="0:1200" id="{e3ba069f-ad0c-4960-b795-84e15d9027a5}" end="0:1600"/>
+            <wall begin="1000:800" id="{e736dc7f-cc63-4a83-9679-4045bbdb0824}" end="1000:600"/>
+            <wall begin="1400:1000" id="{ea9a9717-5b90-48c6-afda-14fb90c7e991}" end="1200:1000"/>
+            <wall begin="800:1200" id="{eaff1d13-32a1-4b13-876e-27ce2a745616}" end="800:1400"/>
+            <wall begin="400:200" id="{ecd84de7-619a-4258-81e9-a1189959fd3f}" end="400:400"/>
+            <wall begin="600:200" id="{f1aa06fa-6fbc-41bc-83a1-30a9de0a80ac}" end="1000:200"/>
+            <wall begin="1400:1200" id="{f59751a1-045f-49e2-bc71-338f51a8fbed}" end="1400:1400"/>
+            <wall begin="400:0" id="{fbbf6aa2-2e72-43a3-8451-3f44f080826f}" end="600:0"/>
+            <wall begin="1196.54:410.44" id="{31b2615e-359f-438f-9c3b-97d763df1126}" end="1402.92:401.165"/>
+            <wall begin="990.159:398.846" id="{16e99294-001e-4810-9b7a-258a00b2984b}" end="994.796:595.95"/>
+            <wall begin="997.115:790.736" id="{7c442b8e-ad72-458d-a1b7-e8ce02a4a1ce}" end="992.478:997.115"/>
+            <wall begin="600.588:804.649" id="{477db63f-3c3d-4424-b67c-9d7b74966cfe}" end="595.95:1006.39"/>
+            <wall begin="609.864:1201.18" id="{6b3c30be-8504-4f97-b71c-7dca20df9392}" end="595.95:1606.98"/>
+            <wall begin="197.104:602.907" id="{b0c9e4d6-22a8-4bf9-bfd5-f6d25be6baac}" end="394.208:602.907"/>
+            <wall begin="199.423:598.269" id="{8d325c43-2b2e-4b16-aef2-7973e82f59bf}" end="-9.27549:598.269"/>
+            <wall begin="199.423:1210.45" id="{da3fe60b-8f59-49a3-ba72-9c2e47c3bec7}" end="389.571:1208.13"/>
+        </walls>
+        <skittles/>
+        <balls/>
+        <colorFields/>
+        <images/>
+        <regions>
+            <region type="rectangle" visible="false" height="200" text="(5,1)" textX="0" x="1000" id="(5,1)" filled="true" y="200" textY="0" color="#87cefa" width="200"/>
+            <region type="rectangle" visible="false" height="200" text="(5,2)" textX="0" x="1000" id="(5,2)" filled="true" y="400" textY="0" color="#87cefa" width="200"/>
+            <region type="rectangle" visible="true" height="200" text="Start" textX="0" x="1400" id="start" filled="true" y="400" textY="0" color="#0000ff" width="200"/>
+            <region type="rectangle" visible="false" height="200" text="(5,3)" textX="0" x="1000" id="(5,3)" filled="true" y="600" textY="0" color="#87cefa" width="200"/>
+            <region type="rectangle" visible="false" height="200" text="(5,5)" textX="0" x="1000" id="(5,5)" filled="true" y="1000" textY="0" color="#87cefa" width="200"/>
+            <region type="rectangle" visible="false" height="200" text="(5,6)" textX="0" x="1000" id="(5,6)" filled="true" y="1200" textY="0" color="#87cefa" width="200"/>
+            <region type="rectangle" visible="false" height="200" text="(5,4)" textX="0" x="1000" id="(5,4)" filled="true" y="800" textY="0" color="#87cefa" width="200"/>
+            <region type="rectangle" visible="false" height="200" text="(5,0)" textX="0" x="1000" id="(5,0)" filled="true" y="0" textY="0" color="#87cefa" width="200"/>
+            <region type="rectangle" visible="false" height="200" text="(4,1)" textX="0" x="800" id="(4,1)" filled="true" y="200" textY="0" color="#87cefa" width="200"/>
+            <region type="rectangle" visible="false" height="200" text="(4,2)" textX="0" x="800" id="(4,2)" filled="true" y="400" textY="0" color="#87cefa" width="200"/>
+            <region type="rectangle" visible="false" height="200" text="(4,7)" textX="0" x="800" id="(4,7)" filled="true" y="1400" textY="0" color="#87cefa" width="200"/>
+            <region type="rectangle" visible="false" height="200" text="(4,3)" textX="0" x="800" id="(4,3)" filled="true" y="600" textY="0" color="#87cefa" width="200"/>
+            <region type="rectangle" visible="false" height="200" text="(4,5)" textX="0" x="800" id="(4,5)" filled="true" y="1000" textY="0" color="#87cefa" width="200"/>
+            <region type="rectangle" visible="false" height="200" text="(4,6)" textX="0" x="800" id="(4,6)" filled="true" y="1200" textY="0" color="#87cefa" width="200"/>
+            <region type="rectangle" visible="false" height="200" text="(4,4)" textX="0" x="800" id="(4,4)" filled="true" y="800" textY="0" color="#87cefa" width="200"/>
+            <region type="rectangle" visible="false" height="200" text="(5,7)" textX="0" x="1000" id="(5,7)" filled="true" y="1400" textY="0" color="#87cefa" width="200"/>
+            <region type="rectangle" visible="false" height="200" text="(7,2)" textX="0" x="1400" id="(7,2)" filled="true" y="400" textY="0" color="#87cefa" width="200"/>
+            <region type="rectangle" visible="false" height="200" text="(7,3)" textX="0" x="1400" id="(7,3)" filled="true" y="600" textY="0" color="#87cefa" width="200"/>
+            <region type="rectangle" visible="false" height="200" text="(6,0)" textX="0" x="1200" id="(6,0)" filled="true" y="0" textY="0" color="#87cefa" width="200"/>
+            <region type="rectangle" visible="false" height="200" text="(7,4)" textX="0" x="1400" id="(7,4)" filled="true" y="800" textY="0" color="#87cefa" width="200"/>
+            <region type="rectangle" visible="false" height="200" text="(7,6)" textX="0" x="1400" id="(7,6)" filled="true" y="1200" textY="0" color="#87cefa" width="200"/>
+            <region type="rectangle" visible="false" height="200" text="(7,7)" textX="0" x="1400" id="(7,7)" filled="true" y="1400" textY="0" color="#87cefa" width="200"/>
+            <region type="rectangle" visible="false" height="200" text="(7,5)" textX="0" x="1400" id="(7,5)" filled="true" y="1000" textY="0" color="#87cefa" width="200"/>
+            <region type="rectangle" visible="false" height="200" text="(7,1)" textX="0" x="1400" id="(7,1)" filled="true" y="200" textY="0" color="#87cefa" width="200"/>
+            <region type="rectangle" visible="false" height="200" text="(6,1)" textX="0" x="1200" id="(6,1)" filled="true" y="200" textY="0" color="#87cefa" width="200"/>
+            <region type="rectangle" visible="false" height="200" text="(6,2)" textX="0" x="1200" id="(6,2)" filled="true" y="400" textY="0" color="#87cefa" width="200"/>
+            <region type="rectangle" visible="false" height="200" text="(7,0)" textX="0" x="1400" id="(7,0)" filled="true" y="0" textY="0" color="#87cefa" width="200"/>
+            <region type="rectangle" visible="false" height="200" text="(6,3)" textX="0" x="1200" id="(6,3)" filled="true" y="600" textY="0" color="#87cefa" width="200"/>
+            <region type="rectangle" visible="false" height="200" text="(6,4)" textX="0" x="1200" id="(6,4)" filled="true" y="800" textY="0" color="#87cefa" width="200"/>
+            <region type="rectangle" visible="false" height="200" text="(6,7)" textX="0" x="1200" id="(6,7)" filled="true" y="1400" textY="0" color="#87cefa" width="200"/>
+            <region type="rectangle" visible="false" height="200" text="(6,5)" textX="0" x="1200" id="(6,5)" filled="true" y="1000" textY="0" color="#87cefa" width="200"/>
+            <region type="rectangle" visible="false" height="200" text="(6,6)" textX="0" x="1200" id="(6,6)" filled="true" y="1200" textY="0" color="#87cefa" width="200"/>
+            <region type="rectangle" visible="false" height="200" text="(4,0)" textX="0" x="800" id="(4,0)" filled="true" y="0" textY="0" color="#87cefa" width="200"/>
+            <region type="rectangle" visible="false" height="200" text="(1,0)" textX="0" x="200" id="(1,0)" filled="true" y="0" textY="0" color="#87cefa" width="200"/>
+            <region type="rectangle" visible="false" height="200" text="(1,1)" textX="0" x="200" id="(1,1)" filled="true" y="200" textY="0" color="#87cefa" width="200"/>
+            <region type="rectangle" visible="false" height="200" text="(3,7)" textX="0" x="600" id="(3,7)" filled="true" y="1400" textY="0" color="#87cefa" width="200"/>
+            <region type="rectangle" visible="false" height="200" text="(1,2)" textX="0" x="200" id="(1,2)" filled="true" y="400" textY="0" color="#87cefa" width="200"/>
+            <region type="rectangle" visible="false" height="200" text="(1,4)" textX="0" x="200" id="(1,4)" filled="true" y="800" textY="0" color="#87cefa" width="200"/>
+            <region type="rectangle" visible="false" height="200" text="(1,5)" textX="0" x="200" id="(1,5)" filled="true" y="1000" textY="0" color="#87cefa" width="200"/>
+            <region type="rectangle" visible="false" height="200" text="(1,3)" textX="0" x="200" id="(1,3)" filled="true" y="600" textY="0" color="#87cefa" width="200"/>
+            <region type="rectangle" visible="false" height="200" text="(0,7)" textX="0" x="0" id="(0,7)" filled="true" y="1400" textY="0" color="#87cefa" width="200"/>
+            <region type="rectangle" visible="false" height="200" text="(0,0)" textX="0" x="0" id="(0,0)" filled="true" y="0" textY="0" color="#87cefa" width="200"/>
+            <region type="rectangle" visible="false" height="200" text="(0,1)" textX="0" x="0" id="(0,1)" filled="true" y="200" textY="0" color="#87cefa" width="200"/>
+            <region type="rectangle" visible="false" height="200" text="(0,6)" textX="0" x="0" id="(0,6)" filled="true" y="1200" textY="0" color="#87cefa" width="200"/>
+            <region type="rectangle" visible="false" height="200" text="(0,2)" textX="0" x="0" id="(0,2)" filled="true" y="400" textY="0" color="#87cefa" width="200"/>
+            <region type="rectangle" visible="false" height="200" text="(0,4)" textX="0" x="0" id="(0,4)" filled="true" y="800" textY="0" color="#87cefa" width="200"/>
+            <region type="rectangle" visible="false" height="200" text="(0,5)" textX="0" x="0" id="(0,5)" filled="true" y="1000" textY="0" color="#87cefa" width="200"/>
+            <region type="rectangle" visible="false" height="200" text="(0,3)" textX="0" x="0" id="(0,3)" filled="true" y="600" textY="0" color="#87cefa" width="200"/>
+            <region type="rectangle" visible="false" height="200" text="(1,6)" textX="0" x="200" id="(1,6)" filled="true" y="1200" textY="0" color="#87cefa" width="200"/>
+            <region type="rectangle" visible="false" height="200" text="(3,1)" textX="0" x="600" id="(3,1)" filled="true" y="200" textY="0" color="#87cefa" width="200"/>
+            <region type="rectangle" visible="false" height="200" text="(3,2)" textX="0" x="600" id="(3,2)" filled="true" y="400" textY="0" color="#87cefa" width="200"/>
+            <region type="rectangle" visible="false" height="200" text="(1,7)" textX="0" x="200" id="(1,7)" filled="true" y="1400" textY="0" color="#87cefa" width="200"/>
+            <region type="rectangle" visible="false" height="200" text="(3,3)" textX="0" x="600" id="(3,3)" filled="true" y="600" textY="0" color="#87cefa" width="200"/>
+            <region type="rectangle" visible="false" height="200" text="(3,5)" textX="0" x="600" id="(3,5)" filled="true" y="1000" textY="0" color="#87cefa" width="200"/>
+            <region type="rectangle" visible="false" height="200" text="(3,6)" textX="0" x="600" id="(3,6)" filled="true" y="1200" textY="0" color="#87cefa" width="200"/>
+            <region type="rectangle" visible="false" height="200" text="(3,4)" textX="0" x="600" id="(3,4)" filled="true" y="800" textY="0" color="#87cefa" width="200"/>
+            <region type="rectangle" visible="false" height="200" text="(3,0)" textX="0" x="600" id="(3,0)" filled="true" y="0" textY="0" color="#87cefa" width="200"/>
+            <region type="rectangle" visible="false" height="200" text="(2,0)" textX="0" x="400" id="(2,0)" filled="true" y="0" textY="0" color="#87cefa" width="200"/>
+            <region type="rectangle" visible="false" height="200" text="(2,1)" textX="0" x="400" id="(2,1)" filled="true" y="200" textY="0" color="#87cefa" width="200"/>
+            <region type="rectangle" visible="false" height="200" text="(2,7)" textX="0" x="400" id="(2,7)" filled="true" y="1400" textY="0" color="#87cefa" width="200"/>
+            <region type="rectangle" visible="false" height="200" text="(2,2)" textX="0" x="400" id="(2,2)" filled="true" y="400" textY="0" color="#87cefa" width="200"/>
+            <region type="rectangle" visible="false" height="200" text="(2,3)" textX="0" x="400" id="(2,3)" filled="true" y="600" textY="0" color="#87cefa" width="200"/>
+            <region type="rectangle" visible="false" height="200" text="(2,6)" textX="0" x="400" id="(2,6)" filled="true" y="1200" textY="0" color="#87cefa" width="200"/>
+            <region type="rectangle" visible="false" height="200" text="(2,4)" textX="0" x="400" id="(2,4)" filled="true" y="800" textY="0" color="#87cefa" width="200"/>
+            <region type="rectangle" visible="false" height="200" text="(2,5)" textX="0" x="400" id="(2,5)" filled="true" y="1000" textY="0" color="#87cefa" width="200"/>
+        </regions>
+    </world>
+    <robots>
+        <robot position="1475:475" id="trikKitRobot" direction="0">
+            <sensors>
+                <sensor type="trik::robotModel::parts::TrikInfraredSensor" port="A2###input###А2###sensorA2" position="25:25" direction="90"/>
+                <sensor type="trik::robotModel::parts::TrikSonarSensor" port="D1###input######sensorD1" position="25:25" direction="0"/>
+                <sensor type="trik::robotModel::parts::TrikInfraredSensor" port="A1###input###А1###sensorA1" position="25:25" direction="-90"/>
+            </sensors>
+            <startPosition x="1500" id="{f36e80f5-a761-414c-9035-74e8fbcd62ee}" direction="0" y="500"/>
+            <wheels left="M1###output###М1###" right="M2###output###М2###"/>
+        </robot>
+    </robots>
+    <constraints>
+        <timelimit value="360000"/>
+        <constraint checkOnce="true" failMessage="У робота не должно быть лишних датчиков!">
+            <conditions glue="and">
+                <equals>
+                    <typeOf objectId="robot1.A3"/>
+                    <string value="undefined"/>
+                </equals>
+                <equals>
+                    <typeOf objectId="robot1.A4"/>
+                    <string value="undefined"/>
+                </equals>
+                <equals>
+                    <typeOf objectId="robot1.A5"/>
+                    <string value="undefined"/>
+                </equals>
+                <equals>
+                    <typeOf objectId="robot1.A6"/>
+                    <string value="undefined"/>
+                </equals>
+                <equals>
+                    <typeOf objectId="robot1.D2"/>
+                    <string value="undefined"/>
+                </equals>
+            </conditions>
+        </constraint>
+        <constraint checkOnce="true" failMessage="Робот должен находиться в зоне старта перед запуском!">
+            <inside objectId="robot1" regionId="start"/>
+        </constraint>
+        <event settedUpInitially="true">
+            <conditions glue="and">
+                <inside objectId="robot1" regionId="(0,0)"/>
+                <greater>
+                    <objectState object="robot1.display.labels.size"/>
+                    <int value="0"/>
+                </greater>
+                <not>
+                    <equals>
+                        <objectState object="robot1.display.labels.first.text"/>
+                        <string value="(0,0)"/>
+                    </equals>
+                </not>
+            </conditions>
+            <trigger>
+                <fail message="cheating detected"/>
+            </trigger>
+        </event>
+        <event settedUpInitially="true">
+            <conditions glue="and">
+                <inside objectId="robot1" regionId="(0,0)"/>
+                <greater>
+                    <objectState object="robot1.display.labels.size"/>
+                    <int value="0"/>
+                </greater>
+                <equals>
+                    <objectState object="robot1.display.labels.first.text"/>
+                    <string value="(0,0)"/>
+                </equals>
+            </conditions>
+            <trigger>
+                <success/>
+            </trigger>
+        </event>
+        <event settedUpInitially="true">
+            <conditions glue="and">
+                <inside objectId="robot1" regionId="(0,1)"/>
+                <greater>
+                    <objectState object="robot1.display.labels.size"/>
+                    <int value="0"/>
+                </greater>
+                <not>
+                    <equals>
+                        <objectState object="robot1.display.labels.first.text"/>
+                        <string value="(0,1)"/>
+                    </equals>
+                </not>
+            </conditions>
+            <trigger>
+                <fail message="cheating detected"/>
+            </trigger>
+        </event>
+        <event settedUpInitially="true">
+            <conditions glue="and">
+                <inside objectId="robot1" regionId="(0,1)"/>
+                <greater>
+                    <objectState object="robot1.display.labels.size"/>
+                    <int value="0"/>
+                </greater>
+                <equals>
+                    <objectState object="robot1.display.labels.first.text"/>
+                    <string value="(0,1)"/>
+                </equals>
+            </conditions>
+            <trigger>
+                <success/>
+            </trigger>
+        </event>
+        <event settedUpInitially="true">
+            <conditions glue="and">
+                <inside objectId="robot1" regionId="(0,2)"/>
+                <greater>
+                    <objectState object="robot1.display.labels.size"/>
+                    <int value="0"/>
+                </greater>
+                <not>
+                    <equals>
+                        <objectState object="robot1.display.labels.first.text"/>
+                        <string value="(0,2)"/>
+                    </equals>
+                </not>
+            </conditions>
+            <trigger>
+                <fail message="cheating detected"/>
+            </trigger>
+        </event>
+        <event settedUpInitially="true">
+            <conditions glue="and">
+                <inside objectId="robot1" regionId="(0,2)"/>
+                <greater>
+                    <objectState object="robot1.display.labels.size"/>
+                    <int value="0"/>
+                </greater>
+                <equals>
+                    <objectState object="robot1.display.labels.first.text"/>
+                    <string value="(0,2)"/>
+                </equals>
+            </conditions>
+            <trigger>
+                <success/>
+            </trigger>
+        </event>
+        <event settedUpInitially="true">
+            <conditions glue="and">
+                <inside objectId="robot1" regionId="(0,3)"/>
+                <greater>
+                    <objectState object="robot1.display.labels.size"/>
+                    <int value="0"/>
+                </greater>
+                <not>
+                    <equals>
+                        <objectState object="robot1.display.labels.first.text"/>
+                        <string value="(0,3)"/>
+                    </equals>
+                </not>
+            </conditions>
+            <trigger>
+                <fail message="cheating detected"/>
+            </trigger>
+        </event>
+        <event settedUpInitially="true">
+            <conditions glue="and">
+                <inside objectId="robot1" regionId="(0,3)"/>
+                <greater>
+                    <objectState object="robot1.display.labels.size"/>
+                    <int value="0"/>
+                </greater>
+                <equals>
+                    <objectState object="robot1.display.labels.first.text"/>
+                    <string value="(0,3)"/>
+                </equals>
+            </conditions>
+            <trigger>
+                <success/>
+            </trigger>
+        </event>
+        <event settedUpInitially="true">
+            <conditions glue="and">
+                <inside objectId="robot1" regionId="(0,4)"/>
+                <greater>
+                    <objectState object="robot1.display.labels.size"/>
+                    <int value="0"/>
+                </greater>
+                <not>
+                    <equals>
+                        <objectState object="robot1.display.labels.first.text"/>
+                        <string value="(0,4)"/>
+                    </equals>
+                </not>
+            </conditions>
+            <trigger>
+                <fail message="cheating detected"/>
+            </trigger>
+        </event>
+        <event settedUpInitially="true">
+            <conditions glue="and">
+                <inside objectId="robot1" regionId="(0,4)"/>
+                <greater>
+                    <objectState object="robot1.display.labels.size"/>
+                    <int value="0"/>
+                </greater>
+                <equals>
+                    <objectState object="robot1.display.labels.first.text"/>
+                    <string value="(0,4)"/>
+                </equals>
+            </conditions>
+            <trigger>
+                <success/>
+            </trigger>
+        </event>
+        <event settedUpInitially="true">
+            <conditions glue="and">
+                <inside objectId="robot1" regionId="(0,5)"/>
+                <greater>
+                    <objectState object="robot1.display.labels.size"/>
+                    <int value="0"/>
+                </greater>
+                <not>
+                    <equals>
+                        <objectState object="robot1.display.labels.first.text"/>
+                        <string value="(0,5)"/>
+                    </equals>
+                </not>
+            </conditions>
+            <trigger>
+                <fail message="cheating detected"/>
+            </trigger>
+        </event>
+        <event settedUpInitially="true">
+            <conditions glue="and">
+                <inside objectId="robot1" regionId="(0,5)"/>
+                <greater>
+                    <objectState object="robot1.display.labels.size"/>
+                    <int value="0"/>
+                </greater>
+                <equals>
+                    <objectState object="robot1.display.labels.first.text"/>
+                    <string value="(0,5)"/>
+                </equals>
+            </conditions>
+            <trigger>
+                <success/>
+            </trigger>
+        </event>
+        <event settedUpInitially="true">
+            <conditions glue="and">
+                <inside objectId="robot1" regionId="(0,6)"/>
+                <greater>
+                    <objectState object="robot1.display.labels.size"/>
+                    <int value="0"/>
+                </greater>
+                <not>
+                    <equals>
+                        <objectState object="robot1.display.labels.first.text"/>
+                        <string value="(0,6)"/>
+                    </equals>
+                </not>
+            </conditions>
+            <trigger>
+                <fail message="cheating detected"/>
+            </trigger>
+        </event>
+        <event settedUpInitially="true">
+            <conditions glue="and">
+                <inside objectId="robot1" regionId="(0,6)"/>
+                <greater>
+                    <objectState object="robot1.display.labels.size"/>
+                    <int value="0"/>
+                </greater>
+                <equals>
+                    <objectState object="robot1.display.labels.first.text"/>
+                    <string value="(0,6)"/>
+                </equals>
+            </conditions>
+            <trigger>
+                <success/>
+            </trigger>
+        </event>
+        <event settedUpInitially="true">
+            <conditions glue="and">
+                <inside objectId="robot1" regionId="(0,7)"/>
+                <greater>
+                    <objectState object="robot1.display.labels.size"/>
+                    <int value="0"/>
+                </greater>
+                <not>
+                    <equals>
+                        <objectState object="robot1.display.labels.first.text"/>
+                        <string value="(0,7)"/>
+                    </equals>
+                </not>
+            </conditions>
+            <trigger>
+                <fail message="cheating detected"/>
+            </trigger>
+        </event>
+        <event settedUpInitially="true">
+            <conditions glue="and">
+                <inside objectId="robot1" regionId="(0,7)"/>
+                <greater>
+                    <objectState object="robot1.display.labels.size"/>
+                    <int value="0"/>
+                </greater>
+                <equals>
+                    <objectState object="robot1.display.labels.first.text"/>
+                    <string value="(0,7)"/>
+                </equals>
+            </conditions>
+            <trigger>
+                <success/>
+            </trigger>
+        </event>
+        <event settedUpInitially="true">
+            <conditions glue="and">
+                <inside objectId="robot1" regionId="(1,0)"/>
+                <greater>
+                    <objectState object="robot1.display.labels.size"/>
+                    <int value="0"/>
+                </greater>
+                <not>
+                    <equals>
+                        <objectState object="robot1.display.labels.first.text"/>
+                        <string value="(1,0)"/>
+                    </equals>
+                </not>
+            </conditions>
+            <trigger>
+                <fail message="cheating detected"/>
+            </trigger>
+        </event>
+        <event settedUpInitially="true">
+            <conditions glue="and">
+                <inside objectId="robot1" regionId="(1,0)"/>
+                <greater>
+                    <objectState object="robot1.display.labels.size"/>
+                    <int value="0"/>
+                </greater>
+                <equals>
+                    <objectState object="robot1.display.labels.first.text"/>
+                    <string value="(1,0)"/>
+                </equals>
+            </conditions>
+            <trigger>
+                <success/>
+            </trigger>
+        </event>
+        <event settedUpInitially="true">
+            <conditions glue="and">
+                <inside objectId="robot1" regionId="(1,1)"/>
+                <greater>
+                    <objectState object="robot1.display.labels.size"/>
+                    <int value="0"/>
+                </greater>
+                <not>
+                    <equals>
+                        <objectState object="robot1.display.labels.first.text"/>
+                        <string value="(1,1)"/>
+                    </equals>
+                </not>
+            </conditions>
+            <trigger>
+                <fail message="cheating detected"/>
+            </trigger>
+        </event>
+        <event settedUpInitially="true">
+            <conditions glue="and">
+                <inside objectId="robot1" regionId="(1,1)"/>
+                <greater>
+                    <objectState object="robot1.display.labels.size"/>
+                    <int value="0"/>
+                </greater>
+                <equals>
+                    <objectState object="robot1.display.labels.first.text"/>
+                    <string value="(1,1)"/>
+                </equals>
+            </conditions>
+            <trigger>
+                <success/>
+            </trigger>
+        </event>
+        <event settedUpInitially="true">
+            <conditions glue="and">
+                <inside objectId="robot1" regionId="(1,2)"/>
+                <greater>
+                    <objectState object="robot1.display.labels.size"/>
+                    <int value="0"/>
+                </greater>
+                <not>
+                    <equals>
+                        <objectState object="robot1.display.labels.first.text"/>
+                        <string value="(1,2)"/>
+                    </equals>
+                </not>
+            </conditions>
+            <trigger>
+                <fail message="cheating detected"/>
+            </trigger>
+        </event>
+        <event settedUpInitially="true">
+            <conditions glue="and">
+                <inside objectId="robot1" regionId="(1,2)"/>
+                <greater>
+                    <objectState object="robot1.display.labels.size"/>
+                    <int value="0"/>
+                </greater>
+                <equals>
+                    <objectState object="robot1.display.labels.first.text"/>
+                    <string value="(1,2)"/>
+                </equals>
+            </conditions>
+            <trigger>
+                <success/>
+            </trigger>
+        </event>
+        <event settedUpInitially="true">
+            <conditions glue="and">
+                <inside objectId="robot1" regionId="(1,3)"/>
+                <greater>
+                    <objectState object="robot1.display.labels.size"/>
+                    <int value="0"/>
+                </greater>
+                <not>
+                    <equals>
+                        <objectState object="robot1.display.labels.first.text"/>
+                        <string value="(1,3)"/>
+                    </equals>
+                </not>
+            </conditions>
+            <trigger>
+                <fail message="cheating detected"/>
+            </trigger>
+        </event>
+        <event settedUpInitially="true">
+            <conditions glue="and">
+                <inside objectId="robot1" regionId="(1,3)"/>
+                <greater>
+                    <objectState object="robot1.display.labels.size"/>
+                    <int value="0"/>
+                </greater>
+                <equals>
+                    <objectState object="robot1.display.labels.first.text"/>
+                    <string value="(1,3)"/>
+                </equals>
+            </conditions>
+            <trigger>
+                <success/>
+            </trigger>
+        </event>
+        <event settedUpInitially="true">
+            <conditions glue="and">
+                <inside objectId="robot1" regionId="(1,4)"/>
+                <greater>
+                    <objectState object="robot1.display.labels.size"/>
+                    <int value="0"/>
+                </greater>
+                <not>
+                    <equals>
+                        <objectState object="robot1.display.labels.first.text"/>
+                        <string value="(1,4)"/>
+                    </equals>
+                </not>
+            </conditions>
+            <trigger>
+                <fail message="cheating detected"/>
+            </trigger>
+        </event>
+        <event settedUpInitially="true">
+            <conditions glue="and">
+                <inside objectId="robot1" regionId="(1,4)"/>
+                <greater>
+                    <objectState object="robot1.display.labels.size"/>
+                    <int value="0"/>
+                </greater>
+                <equals>
+                    <objectState object="robot1.display.labels.first.text"/>
+                    <string value="(1,4)"/>
+                </equals>
+            </conditions>
+            <trigger>
+                <success/>
+            </trigger>
+        </event>
+        <event settedUpInitially="true">
+            <conditions glue="and">
+                <inside objectId="robot1" regionId="(1,5)"/>
+                <greater>
+                    <objectState object="robot1.display.labels.size"/>
+                    <int value="0"/>
+                </greater>
+                <not>
+                    <equals>
+                        <objectState object="robot1.display.labels.first.text"/>
+                        <string value="(1,5)"/>
+                    </equals>
+                </not>
+            </conditions>
+            <trigger>
+                <fail message="cheating detected"/>
+            </trigger>
+        </event>
+        <event settedUpInitially="true">
+            <conditions glue="and">
+                <inside objectId="robot1" regionId="(1,5)"/>
+                <greater>
+                    <objectState object="robot1.display.labels.size"/>
+                    <int value="0"/>
+                </greater>
+                <equals>
+                    <objectState object="robot1.display.labels.first.text"/>
+                    <string value="(1,5)"/>
+                </equals>
+            </conditions>
+            <trigger>
+                <success/>
+            </trigger>
+        </event>
+        <event settedUpInitially="true">
+            <conditions glue="and">
+                <inside objectId="robot1" regionId="(1,6)"/>
+                <greater>
+                    <objectState object="robot1.display.labels.size"/>
+                    <int value="0"/>
+                </greater>
+                <not>
+                    <equals>
+                        <objectState object="robot1.display.labels.first.text"/>
+                        <string value="(1,6)"/>
+                    </equals>
+                </not>
+            </conditions>
+            <trigger>
+                <fail message="cheating detected"/>
+            </trigger>
+        </event>
+        <event settedUpInitially="true">
+            <conditions glue="and">
+                <inside objectId="robot1" regionId="(1,6)"/>
+                <greater>
+                    <objectState object="robot1.display.labels.size"/>
+                    <int value="0"/>
+                </greater>
+                <equals>
+                    <objectState object="robot1.display.labels.first.text"/>
+                    <string value="(1,6)"/>
+                </equals>
+            </conditions>
+            <trigger>
+                <success/>
+            </trigger>
+        </event>
+        <event settedUpInitially="true">
+            <conditions glue="and">
+                <inside objectId="robot1" regionId="(1,7)"/>
+                <greater>
+                    <objectState object="robot1.display.labels.size"/>
+                    <int value="0"/>
+                </greater>
+                <not>
+                    <equals>
+                        <objectState object="robot1.display.labels.first.text"/>
+                        <string value="(1,7)"/>
+                    </equals>
+                </not>
+            </conditions>
+            <trigger>
+                <fail message="cheating detected"/>
+            </trigger>
+        </event>
+        <event settedUpInitially="true">
+            <conditions glue="and">
+                <inside objectId="robot1" regionId="(1,7)"/>
+                <greater>
+                    <objectState object="robot1.display.labels.size"/>
+                    <int value="0"/>
+                </greater>
+                <equals>
+                    <objectState object="robot1.display.labels.first.text"/>
+                    <string value="(1,7)"/>
+                </equals>
+            </conditions>
+            <trigger>
+                <success/>
+            </trigger>
+        </event>
+        <event settedUpInitially="true">
+            <conditions glue="and">
+                <inside objectId="robot1" regionId="(2,0)"/>
+                <greater>
+                    <objectState object="robot1.display.labels.size"/>
+                    <int value="0"/>
+                </greater>
+                <not>
+                    <equals>
+                        <objectState object="robot1.display.labels.first.text"/>
+                        <string value="(2,0)"/>
+                    </equals>
+                </not>
+            </conditions>
+            <trigger>
+                <fail message="cheating detected"/>
+            </trigger>
+        </event>
+        <event settedUpInitially="true">
+            <conditions glue="and">
+                <inside objectId="robot1" regionId="(2,0)"/>
+                <greater>
+                    <objectState object="robot1.display.labels.size"/>
+                    <int value="0"/>
+                </greater>
+                <equals>
+                    <objectState object="robot1.display.labels.first.text"/>
+                    <string value="(2,0)"/>
+                </equals>
+            </conditions>
+            <trigger>
+                <success/>
+            </trigger>
+        </event>
+        <event settedUpInitially="true">
+            <conditions glue="and">
+                <inside objectId="robot1" regionId="(2,1)"/>
+                <greater>
+                    <objectState object="robot1.display.labels.size"/>
+                    <int value="0"/>
+                </greater>
+                <not>
+                    <equals>
+                        <objectState object="robot1.display.labels.first.text"/>
+                        <string value="(2,1)"/>
+                    </equals>
+                </not>
+            </conditions>
+            <trigger>
+                <fail message="cheating detected"/>
+            </trigger>
+        </event>
+        <event settedUpInitially="true">
+            <conditions glue="and">
+                <inside objectId="robot1" regionId="(2,1)"/>
+                <greater>
+                    <objectState object="robot1.display.labels.size"/>
+                    <int value="0"/>
+                </greater>
+                <equals>
+                    <objectState object="robot1.display.labels.first.text"/>
+                    <string value="(2,1)"/>
+                </equals>
+            </conditions>
+            <trigger>
+                <success/>
+            </trigger>
+        </event>
+        <event settedUpInitially="true">
+            <conditions glue="and">
+                <inside objectId="robot1" regionId="(2,2)"/>
+                <greater>
+                    <objectState object="robot1.display.labels.size"/>
+                    <int value="0"/>
+                </greater>
+                <not>
+                    <equals>
+                        <objectState object="robot1.display.labels.first.text"/>
+                        <string value="(2,2)"/>
+                    </equals>
+                </not>
+            </conditions>
+            <trigger>
+                <fail message="cheating detected"/>
+            </trigger>
+        </event>
+        <event settedUpInitially="true">
+            <conditions glue="and">
+                <inside objectId="robot1" regionId="(2,2)"/>
+                <greater>
+                    <objectState object="robot1.display.labels.size"/>
+                    <int value="0"/>
+                </greater>
+                <equals>
+                    <objectState object="robot1.display.labels.first.text"/>
+                    <string value="(2,2)"/>
+                </equals>
+            </conditions>
+            <trigger>
+                <success/>
+            </trigger>
+        </event>
+        <event settedUpInitially="true">
+            <conditions glue="and">
+                <inside objectId="robot1" regionId="(2,3)"/>
+                <greater>
+                    <objectState object="robot1.display.labels.size"/>
+                    <int value="0"/>
+                </greater>
+                <not>
+                    <equals>
+                        <objectState object="robot1.display.labels.first.text"/>
+                        <string value="(2,3)"/>
+                    </equals>
+                </not>
+            </conditions>
+            <trigger>
+                <fail message="cheating detected"/>
+            </trigger>
+        </event>
+        <event settedUpInitially="true">
+            <conditions glue="and">
+                <inside objectId="robot1" regionId="(2,3)"/>
+                <greater>
+                    <objectState object="robot1.display.labels.size"/>
+                    <int value="0"/>
+                </greater>
+                <equals>
+                    <objectState object="robot1.display.labels.first.text"/>
+                    <string value="(2,3)"/>
+                </equals>
+            </conditions>
+            <trigger>
+                <success/>
+            </trigger>
+        </event>
+        <event settedUpInitially="true">
+            <conditions glue="and">
+                <inside objectId="robot1" regionId="(2,4)"/>
+                <greater>
+                    <objectState object="robot1.display.labels.size"/>
+                    <int value="0"/>
+                </greater>
+                <not>
+                    <equals>
+                        <objectState object="robot1.display.labels.first.text"/>
+                        <string value="(2,4)"/>
+                    </equals>
+                </not>
+            </conditions>
+            <trigger>
+                <fail message="cheating detected"/>
+            </trigger>
+        </event>
+        <event settedUpInitially="true">
+            <conditions glue="and">
+                <inside objectId="robot1" regionId="(2,4)"/>
+                <greater>
+                    <objectState object="robot1.display.labels.size"/>
+                    <int value="0"/>
+                </greater>
+                <equals>
+                    <objectState object="robot1.display.labels.first.text"/>
+                    <string value="(2,4)"/>
+                </equals>
+            </conditions>
+            <trigger>
+                <success/>
+            </trigger>
+        </event>
+        <event settedUpInitially="true">
+            <conditions glue="and">
+                <inside objectId="robot1" regionId="(2,5)"/>
+                <greater>
+                    <objectState object="robot1.display.labels.size"/>
+                    <int value="0"/>
+                </greater>
+                <not>
+                    <equals>
+                        <objectState object="robot1.display.labels.first.text"/>
+                        <string value="(2,5)"/>
+                    </equals>
+                </not>
+            </conditions>
+            <trigger>
+                <fail message="cheating detected"/>
+            </trigger>
+        </event>
+        <event settedUpInitially="true">
+            <conditions glue="and">
+                <inside objectId="robot1" regionId="(2,5)"/>
+                <greater>
+                    <objectState object="robot1.display.labels.size"/>
+                    <int value="0"/>
+                </greater>
+                <equals>
+                    <objectState object="robot1.display.labels.first.text"/>
+                    <string value="(2,5)"/>
+                </equals>
+            </conditions>
+            <trigger>
+                <success/>
+            </trigger>
+        </event>
+        <event settedUpInitially="true">
+            <conditions glue="and">
+                <inside objectId="robot1" regionId="(2,6)"/>
+                <greater>
+                    <objectState object="robot1.display.labels.size"/>
+                    <int value="0"/>
+                </greater>
+                <not>
+                    <equals>
+                        <objectState object="robot1.display.labels.first.text"/>
+                        <string value="(2,6)"/>
+                    </equals>
+                </not>
+            </conditions>
+            <trigger>
+                <fail message="cheating detected"/>
+            </trigger>
+        </event>
+        <event settedUpInitially="true">
+            <conditions glue="and">
+                <inside objectId="robot1" regionId="(2,6)"/>
+                <greater>
+                    <objectState object="robot1.display.labels.size"/>
+                    <int value="0"/>
+                </greater>
+                <equals>
+                    <objectState object="robot1.display.labels.first.text"/>
+                    <string value="(2,6)"/>
+                </equals>
+            </conditions>
+            <trigger>
+                <success/>
+            </trigger>
+        </event>
+        <event settedUpInitially="true">
+            <conditions glue="and">
+                <inside objectId="robot1" regionId="(2,7)"/>
+                <greater>
+                    <objectState object="robot1.display.labels.size"/>
+                    <int value="0"/>
+                </greater>
+                <not>
+                    <equals>
+                        <objectState object="robot1.display.labels.first.text"/>
+                        <string value="(2,7)"/>
+                    </equals>
+                </not>
+            </conditions>
+            <trigger>
+                <fail message="cheating detected"/>
+            </trigger>
+        </event>
+        <event settedUpInitially="true">
+            <conditions glue="and">
+                <inside objectId="robot1" regionId="(2,7)"/>
+                <greater>
+                    <objectState object="robot1.display.labels.size"/>
+                    <int value="0"/>
+                </greater>
+                <equals>
+                    <objectState object="robot1.display.labels.first.text"/>
+                    <string value="(2,7)"/>
+                </equals>
+            </conditions>
+            <trigger>
+                <success/>
+            </trigger>
+        </event>
+        <event settedUpInitially="true">
+            <conditions glue="and">
+                <inside objectId="robot1" regionId="(3,0)"/>
+                <greater>
+                    <objectState object="robot1.display.labels.size"/>
+                    <int value="0"/>
+                </greater>
+                <not>
+                    <equals>
+                        <objectState object="robot1.display.labels.first.text"/>
+                        <string value="(3,0)"/>
+                    </equals>
+                </not>
+            </conditions>
+            <trigger>
+                <fail message="cheating detected"/>
+            </trigger>
+        </event>
+        <event settedUpInitially="true">
+            <conditions glue="and">
+                <inside objectId="robot1" regionId="(3,0)"/>
+                <greater>
+                    <objectState object="robot1.display.labels.size"/>
+                    <int value="0"/>
+                </greater>
+                <equals>
+                    <objectState object="robot1.display.labels.first.text"/>
+                    <string value="(3,0)"/>
+                </equals>
+            </conditions>
+            <trigger>
+                <success/>
+            </trigger>
+        </event>
+        <event settedUpInitially="true">
+            <conditions glue="and">
+                <inside objectId="robot1" regionId="(3,1)"/>
+                <greater>
+                    <objectState object="robot1.display.labels.size"/>
+                    <int value="0"/>
+                </greater>
+                <not>
+                    <equals>
+                        <objectState object="robot1.display.labels.first.text"/>
+                        <string value="(3,1)"/>
+                    </equals>
+                </not>
+            </conditions>
+            <trigger>
+                <fail message="cheating detected"/>
+            </trigger>
+        </event>
+        <event settedUpInitially="true">
+            <conditions glue="and">
+                <inside objectId="robot1" regionId="(3,1)"/>
+                <greater>
+                    <objectState object="robot1.display.labels.size"/>
+                    <int value="0"/>
+                </greater>
+                <equals>
+                    <objectState object="robot1.display.labels.first.text"/>
+                    <string value="(3,1)"/>
+                </equals>
+            </conditions>
+            <trigger>
+                <success/>
+            </trigger>
+        </event>
+        <event settedUpInitially="true">
+            <conditions glue="and">
+                <inside objectId="robot1" regionId="(3,2)"/>
+                <greater>
+                    <objectState object="robot1.display.labels.size"/>
+                    <int value="0"/>
+                </greater>
+                <not>
+                    <equals>
+                        <objectState object="robot1.display.labels.first.text"/>
+                        <string value="(3,2)"/>
+                    </equals>
+                </not>
+            </conditions>
+            <trigger>
+                <fail message="cheating detected"/>
+            </trigger>
+        </event>
+        <event settedUpInitially="true">
+            <conditions glue="and">
+                <inside objectId="robot1" regionId="(3,2)"/>
+                <greater>
+                    <objectState object="robot1.display.labels.size"/>
+                    <int value="0"/>
+                </greater>
+                <equals>
+                    <objectState object="robot1.display.labels.first.text"/>
+                    <string value="(3,2)"/>
+                </equals>
+            </conditions>
+            <trigger>
+                <success/>
+            </trigger>
+        </event>
+        <event settedUpInitially="true">
+            <conditions glue="and">
+                <inside objectId="robot1" regionId="(3,3)"/>
+                <greater>
+                    <objectState object="robot1.display.labels.size"/>
+                    <int value="0"/>
+                </greater>
+                <not>
+                    <equals>
+                        <objectState object="robot1.display.labels.first.text"/>
+                        <string value="(3,3)"/>
+                    </equals>
+                </not>
+            </conditions>
+            <trigger>
+                <fail message="cheating detected"/>
+            </trigger>
+        </event>
+        <event settedUpInitially="true">
+            <conditions glue="and">
+                <inside objectId="robot1" regionId="(3,3)"/>
+                <greater>
+                    <objectState object="robot1.display.labels.size"/>
+                    <int value="0"/>
+                </greater>
+                <equals>
+                    <objectState object="robot1.display.labels.first.text"/>
+                    <string value="(3,3)"/>
+                </equals>
+            </conditions>
+            <trigger>
+                <success/>
+            </trigger>
+        </event>
+        <event settedUpInitially="true">
+            <conditions glue="and">
+                <inside objectId="robot1" regionId="(3,4)"/>
+                <greater>
+                    <objectState object="robot1.display.labels.size"/>
+                    <int value="0"/>
+                </greater>
+                <not>
+                    <equals>
+                        <objectState object="robot1.display.labels.first.text"/>
+                        <string value="(3,4)"/>
+                    </equals>
+                </not>
+            </conditions>
+            <trigger>
+                <fail message="cheating detected"/>
+            </trigger>
+        </event>
+        <event settedUpInitially="true">
+            <conditions glue="and">
+                <inside objectId="robot1" regionId="(3,4)"/>
+                <greater>
+                    <objectState object="robot1.display.labels.size"/>
+                    <int value="0"/>
+                </greater>
+                <equals>
+                    <objectState object="robot1.display.labels.first.text"/>
+                    <string value="(3,4)"/>
+                </equals>
+            </conditions>
+            <trigger>
+                <success/>
+            </trigger>
+        </event>
+        <event settedUpInitially="true">
+            <conditions glue="and">
+                <inside objectId="robot1" regionId="(3,5)"/>
+                <greater>
+                    <objectState object="robot1.display.labels.size"/>
+                    <int value="0"/>
+                </greater>
+                <not>
+                    <equals>
+                        <objectState object="robot1.display.labels.first.text"/>
+                        <string value="(3,5)"/>
+                    </equals>
+                </not>
+            </conditions>
+            <trigger>
+                <fail message="cheating detected"/>
+            </trigger>
+        </event>
+        <event settedUpInitially="true">
+            <conditions glue="and">
+                <inside objectId="robot1" regionId="(3,5)"/>
+                <greater>
+                    <objectState object="robot1.display.labels.size"/>
+                    <int value="0"/>
+                </greater>
+                <equals>
+                    <objectState object="robot1.display.labels.first.text"/>
+                    <string value="(3,5)"/>
+                </equals>
+            </conditions>
+            <trigger>
+                <success/>
+            </trigger>
+        </event>
+        <event settedUpInitially="true">
+            <conditions glue="and">
+                <inside objectId="robot1" regionId="(3,6)"/>
+                <greater>
+                    <objectState object="robot1.display.labels.size"/>
+                    <int value="0"/>
+                </greater>
+                <not>
+                    <equals>
+                        <objectState object="robot1.display.labels.first.text"/>
+                        <string value="(3,6)"/>
+                    </equals>
+                </not>
+            </conditions>
+            <trigger>
+                <fail message="cheating detected"/>
+            </trigger>
+        </event>
+        <event settedUpInitially="true">
+            <conditions glue="and">
+                <inside objectId="robot1" regionId="(3,6)"/>
+                <greater>
+                    <objectState object="robot1.display.labels.size"/>
+                    <int value="0"/>
+                </greater>
+                <equals>
+                    <objectState object="robot1.display.labels.first.text"/>
+                    <string value="(3,6)"/>
+                </equals>
+            </conditions>
+            <trigger>
+                <success/>
+            </trigger>
+        </event>
+        <event settedUpInitially="true">
+            <conditions glue="and">
+                <inside objectId="robot1" regionId="(3,7)"/>
+                <greater>
+                    <objectState object="robot1.display.labels.size"/>
+                    <int value="0"/>
+                </greater>
+                <not>
+                    <equals>
+                        <objectState object="robot1.display.labels.first.text"/>
+                        <string value="(3,7)"/>
+                    </equals>
+                </not>
+            </conditions>
+            <trigger>
+                <fail message="cheating detected"/>
+            </trigger>
+        </event>
+        <event settedUpInitially="true">
+            <conditions glue="and">
+                <inside objectId="robot1" regionId="(3,7)"/>
+                <greater>
+                    <objectState object="robot1.display.labels.size"/>
+                    <int value="0"/>
+                </greater>
+                <equals>
+                    <objectState object="robot1.display.labels.first.text"/>
+                    <string value="(3,7)"/>
+                </equals>
+            </conditions>
+            <trigger>
+                <success/>
+            </trigger>
+        </event>
+        <event settedUpInitially="true">
+            <conditions glue="and">
+                <inside objectId="robot1" regionId="(4,0)"/>
+                <greater>
+                    <objectState object="robot1.display.labels.size"/>
+                    <int value="0"/>
+                </greater>
+                <not>
+                    <equals>
+                        <objectState object="robot1.display.labels.first.text"/>
+                        <string value="(4,0)"/>
+                    </equals>
+                </not>
+            </conditions>
+            <trigger>
+                <fail message="cheating detected"/>
+            </trigger>
+        </event>
+        <event settedUpInitially="true">
+            <conditions glue="and">
+                <inside objectId="robot1" regionId="(4,0)"/>
+                <greater>
+                    <objectState object="robot1.display.labels.size"/>
+                    <int value="0"/>
+                </greater>
+                <equals>
+                    <objectState object="robot1.display.labels.first.text"/>
+                    <string value="(4,0)"/>
+                </equals>
+            </conditions>
+            <trigger>
+                <success/>
+            </trigger>
+        </event>
+        <event settedUpInitially="true">
+            <conditions glue="and">
+                <inside objectId="robot1" regionId="(4,1)"/>
+                <greater>
+                    <objectState object="robot1.display.labels.size"/>
+                    <int value="0"/>
+                </greater>
+                <not>
+                    <equals>
+                        <objectState object="robot1.display.labels.first.text"/>
+                        <string value="(4,1)"/>
+                    </equals>
+                </not>
+            </conditions>
+            <trigger>
+                <fail message="cheating detected"/>
+            </trigger>
+        </event>
+        <event settedUpInitially="true">
+            <conditions glue="and">
+                <inside objectId="robot1" regionId="(4,1)"/>
+                <greater>
+                    <objectState object="robot1.display.labels.size"/>
+                    <int value="0"/>
+                </greater>
+                <equals>
+                    <objectState object="robot1.display.labels.first.text"/>
+                    <string value="(4,1)"/>
+                </equals>
+            </conditions>
+            <trigger>
+                <success/>
+            </trigger>
+        </event>
+        <event settedUpInitially="true">
+            <conditions glue="and">
+                <inside objectId="robot1" regionId="(4,2)"/>
+                <greater>
+                    <objectState object="robot1.display.labels.size"/>
+                    <int value="0"/>
+                </greater>
+                <not>
+                    <equals>
+                        <objectState object="robot1.display.labels.first.text"/>
+                        <string value="(4,2)"/>
+                    </equals>
+                </not>
+            </conditions>
+            <trigger>
+                <fail message="cheating detected"/>
+            </trigger>
+        </event>
+        <event settedUpInitially="true">
+            <conditions glue="and">
+                <inside objectId="robot1" regionId="(4,2)"/>
+                <greater>
+                    <objectState object="robot1.display.labels.size"/>
+                    <int value="0"/>
+                </greater>
+                <equals>
+                    <objectState object="robot1.display.labels.first.text"/>
+                    <string value="(4,2)"/>
+                </equals>
+            </conditions>
+            <trigger>
+                <success/>
+            </trigger>
+        </event>
+        <event settedUpInitially="true">
+            <conditions glue="and">
+                <inside objectId="robot1" regionId="(4,3)"/>
+                <greater>
+                    <objectState object="robot1.display.labels.size"/>
+                    <int value="0"/>
+                </greater>
+                <not>
+                    <equals>
+                        <objectState object="robot1.display.labels.first.text"/>
+                        <string value="(4,3)"/>
+                    </equals>
+                </not>
+            </conditions>
+            <trigger>
+                <fail message="cheating detected"/>
+            </trigger>
+        </event>
+        <event settedUpInitially="true">
+            <conditions glue="and">
+                <inside objectId="robot1" regionId="(4,3)"/>
+                <greater>
+                    <objectState object="robot1.display.labels.size"/>
+                    <int value="0"/>
+                </greater>
+                <equals>
+                    <objectState object="robot1.display.labels.first.text"/>
+                    <string value="(4,3)"/>
+                </equals>
+            </conditions>
+            <trigger>
+                <success/>
+            </trigger>
+        </event>
+        <event settedUpInitially="true">
+            <conditions glue="and">
+                <inside objectId="robot1" regionId="(4,4)"/>
+                <greater>
+                    <objectState object="robot1.display.labels.size"/>
+                    <int value="0"/>
+                </greater>
+                <not>
+                    <equals>
+                        <objectState object="robot1.display.labels.first.text"/>
+                        <string value="(4,4)"/>
+                    </equals>
+                </not>
+            </conditions>
+            <trigger>
+                <fail message="cheating detected"/>
+            </trigger>
+        </event>
+        <event settedUpInitially="true">
+            <conditions glue="and">
+                <inside objectId="robot1" regionId="(4,4)"/>
+                <greater>
+                    <objectState object="robot1.display.labels.size"/>
+                    <int value="0"/>
+                </greater>
+                <equals>
+                    <objectState object="robot1.display.labels.first.text"/>
+                    <string value="(4,4)"/>
+                </equals>
+            </conditions>
+            <trigger>
+                <success/>
+            </trigger>
+        </event>
+        <event settedUpInitially="true">
+            <conditions glue="and">
+                <inside objectId="robot1" regionId="(4,5)"/>
+                <greater>
+                    <objectState object="robot1.display.labels.size"/>
+                    <int value="0"/>
+                </greater>
+                <not>
+                    <equals>
+                        <objectState object="robot1.display.labels.first.text"/>
+                        <string value="(4,5)"/>
+                    </equals>
+                </not>
+            </conditions>
+            <trigger>
+                <fail message="cheating detected"/>
+            </trigger>
+        </event>
+        <event settedUpInitially="true">
+            <conditions glue="and">
+                <inside objectId="robot1" regionId="(4,5)"/>
+                <greater>
+                    <objectState object="robot1.display.labels.size"/>
+                    <int value="0"/>
+                </greater>
+                <equals>
+                    <objectState object="robot1.display.labels.first.text"/>
+                    <string value="(4,5)"/>
+                </equals>
+            </conditions>
+            <trigger>
+                <success/>
+            </trigger>
+        </event>
+        <event settedUpInitially="true">
+            <conditions glue="and">
+                <inside objectId="robot1" regionId="(4,6)"/>
+                <greater>
+                    <objectState object="robot1.display.labels.size"/>
+                    <int value="0"/>
+                </greater>
+                <not>
+                    <equals>
+                        <objectState object="robot1.display.labels.first.text"/>
+                        <string value="(4,6)"/>
+                    </equals>
+                </not>
+            </conditions>
+            <trigger>
+                <fail message="cheating detected"/>
+            </trigger>
+        </event>
+        <event settedUpInitially="true">
+            <conditions glue="and">
+                <inside objectId="robot1" regionId="(4,6)"/>
+                <greater>
+                    <objectState object="robot1.display.labels.size"/>
+                    <int value="0"/>
+                </greater>
+                <equals>
+                    <objectState object="robot1.display.labels.first.text"/>
+                    <string value="(4,6)"/>
+                </equals>
+            </conditions>
+            <trigger>
+                <success/>
+            </trigger>
+        </event>
+        <event settedUpInitially="true">
+            <conditions glue="and">
+                <inside objectId="robot1" regionId="(4,7)"/>
+                <greater>
+                    <objectState object="robot1.display.labels.size"/>
+                    <int value="0"/>
+                </greater>
+                <not>
+                    <equals>
+                        <objectState object="robot1.display.labels.first.text"/>
+                        <string value="(4,7)"/>
+                    </equals>
+                </not>
+            </conditions>
+            <trigger>
+                <fail message="cheating detected"/>
+            </trigger>
+        </event>
+        <event settedUpInitially="true">
+            <conditions glue="and">
+                <inside objectId="robot1" regionId="(4,7)"/>
+                <greater>
+                    <objectState object="robot1.display.labels.size"/>
+                    <int value="0"/>
+                </greater>
+                <equals>
+                    <objectState object="robot1.display.labels.first.text"/>
+                    <string value="(4,7)"/>
+                </equals>
+            </conditions>
+            <trigger>
+                <success/>
+            </trigger>
+        </event>
+        <event settedUpInitially="true">
+            <conditions glue="and">
+                <inside objectId="robot1" regionId="(5,0)"/>
+                <greater>
+                    <objectState object="robot1.display.labels.size"/>
+                    <int value="0"/>
+                </greater>
+                <not>
+                    <equals>
+                        <objectState object="robot1.display.labels.first.text"/>
+                        <string value="(5,0)"/>
+                    </equals>
+                </not>
+            </conditions>
+            <trigger>
+                <fail message="cheating detected"/>
+            </trigger>
+        </event>
+        <event settedUpInitially="true">
+            <conditions glue="and">
+                <inside objectId="robot1" regionId="(5,0)"/>
+                <greater>
+                    <objectState object="robot1.display.labels.size"/>
+                    <int value="0"/>
+                </greater>
+                <equals>
+                    <objectState object="robot1.display.labels.first.text"/>
+                    <string value="(5,0)"/>
+                </equals>
+            </conditions>
+            <trigger>
+                <success/>
+            </trigger>
+        </event>
+        <event settedUpInitially="true">
+            <conditions glue="and">
+                <inside objectId="robot1" regionId="(5,1)"/>
+                <greater>
+                    <objectState object="robot1.display.labels.size"/>
+                    <int value="0"/>
+                </greater>
+                <not>
+                    <equals>
+                        <objectState object="robot1.display.labels.first.text"/>
+                        <string value="(5,1)"/>
+                    </equals>
+                </not>
+            </conditions>
+            <trigger>
+                <fail message="cheating detected"/>
+            </trigger>
+        </event>
+        <event settedUpInitially="true">
+            <conditions glue="and">
+                <inside objectId="robot1" regionId="(5,1)"/>
+                <greater>
+                    <objectState object="robot1.display.labels.size"/>
+                    <int value="0"/>
+                </greater>
+                <equals>
+                    <objectState object="robot1.display.labels.first.text"/>
+                    <string value="(5,1)"/>
+                </equals>
+            </conditions>
+            <trigger>
+                <success/>
+            </trigger>
+        </event>
+        <event settedUpInitially="true">
+            <conditions glue="and">
+                <inside objectId="robot1" regionId="(5,2)"/>
+                <greater>
+                    <objectState object="robot1.display.labels.size"/>
+                    <int value="0"/>
+                </greater>
+                <not>
+                    <equals>
+                        <objectState object="robot1.display.labels.first.text"/>
+                        <string value="(5,2)"/>
+                    </equals>
+                </not>
+            </conditions>
+            <trigger>
+                <fail message="cheating detected"/>
+            </trigger>
+        </event>
+        <event settedUpInitially="true">
+            <conditions glue="and">
+                <inside objectId="robot1" regionId="(5,2)"/>
+                <greater>
+                    <objectState object="robot1.display.labels.size"/>
+                    <int value="0"/>
+                </greater>
+                <equals>
+                    <objectState object="robot1.display.labels.first.text"/>
+                    <string value="(5,2)"/>
+                </equals>
+            </conditions>
+            <trigger>
+                <success/>
+            </trigger>
+        </event>
+        <event settedUpInitially="true">
+            <conditions glue="and">
+                <inside objectId="robot1" regionId="(5,3)"/>
+                <greater>
+                    <objectState object="robot1.display.labels.size"/>
+                    <int value="0"/>
+                </greater>
+                <not>
+                    <equals>
+                        <objectState object="robot1.display.labels.first.text"/>
+                        <string value="(5,3)"/>
+                    </equals>
+                </not>
+            </conditions>
+            <trigger>
+                <fail message="cheating detected"/>
+            </trigger>
+        </event>
+        <event settedUpInitially="true">
+            <conditions glue="and">
+                <inside objectId="robot1" regionId="(5,3)"/>
+                <greater>
+                    <objectState object="robot1.display.labels.size"/>
+                    <int value="0"/>
+                </greater>
+                <equals>
+                    <objectState object="robot1.display.labels.first.text"/>
+                    <string value="(5,3)"/>
+                </equals>
+            </conditions>
+            <trigger>
+                <success/>
+            </trigger>
+        </event>
+        <event settedUpInitially="true">
+            <conditions glue="and">
+                <inside objectId="robot1" regionId="(5,4)"/>
+                <greater>
+                    <objectState object="robot1.display.labels.size"/>
+                    <int value="0"/>
+                </greater>
+                <not>
+                    <equals>
+                        <objectState object="robot1.display.labels.first.text"/>
+                        <string value="(5,4)"/>
+                    </equals>
+                </not>
+            </conditions>
+            <trigger>
+                <fail message="cheating detected"/>
+            </trigger>
+        </event>
+        <event settedUpInitially="true">
+            <conditions glue="and">
+                <inside objectId="robot1" regionId="(5,4)"/>
+                <greater>
+                    <objectState object="robot1.display.labels.size"/>
+                    <int value="0"/>
+                </greater>
+                <equals>
+                    <objectState object="robot1.display.labels.first.text"/>
+                    <string value="(5,4)"/>
+                </equals>
+            </conditions>
+            <trigger>
+                <success/>
+            </trigger>
+        </event>
+        <event settedUpInitially="true">
+            <conditions glue="and">
+                <inside objectId="robot1" regionId="(5,5)"/>
+                <greater>
+                    <objectState object="robot1.display.labels.size"/>
+                    <int value="0"/>
+                </greater>
+                <not>
+                    <equals>
+                        <objectState object="robot1.display.labels.first.text"/>
+                        <string value="(5,5)"/>
+                    </equals>
+                </not>
+            </conditions>
+            <trigger>
+                <fail message="cheating detected"/>
+            </trigger>
+        </event>
+        <event settedUpInitially="true">
+            <conditions glue="and">
+                <inside objectId="robot1" regionId="(5,5)"/>
+                <greater>
+                    <objectState object="robot1.display.labels.size"/>
+                    <int value="0"/>
+                </greater>
+                <equals>
+                    <objectState object="robot1.display.labels.first.text"/>
+                    <string value="(5,5)"/>
+                </equals>
+            </conditions>
+            <trigger>
+                <success/>
+            </trigger>
+        </event>
+        <event settedUpInitially="true">
+            <conditions glue="and">
+                <inside objectId="robot1" regionId="(5,6)"/>
+                <greater>
+                    <objectState object="robot1.display.labels.size"/>
+                    <int value="0"/>
+                </greater>
+                <not>
+                    <equals>
+                        <objectState object="robot1.display.labels.first.text"/>
+                        <string value="(5,6)"/>
+                    </equals>
+                </not>
+            </conditions>
+            <trigger>
+                <fail message="cheating detected"/>
+            </trigger>
+        </event>
+        <event settedUpInitially="true">
+            <conditions glue="and">
+                <inside objectId="robot1" regionId="(5,6)"/>
+                <greater>
+                    <objectState object="robot1.display.labels.size"/>
+                    <int value="0"/>
+                </greater>
+                <equals>
+                    <objectState object="robot1.display.labels.first.text"/>
+                    <string value="(5,6)"/>
+                </equals>
+            </conditions>
+            <trigger>
+                <success/>
+            </trigger>
+        </event>
+        <event settedUpInitially="true">
+            <conditions glue="and">
+                <inside objectId="robot1" regionId="(5,7)"/>
+                <greater>
+                    <objectState object="robot1.display.labels.size"/>
+                    <int value="0"/>
+                </greater>
+                <not>
+                    <equals>
+                        <objectState object="robot1.display.labels.first.text"/>
+                        <string value="(5,7)"/>
+                    </equals>
+                </not>
+            </conditions>
+            <trigger>
+                <fail message="cheating detected"/>
+            </trigger>
+        </event>
+        <event settedUpInitially="true">
+            <conditions glue="and">
+                <inside objectId="robot1" regionId="(5,7)"/>
+                <greater>
+                    <objectState object="robot1.display.labels.size"/>
+                    <int value="0"/>
+                </greater>
+                <equals>
+                    <objectState object="robot1.display.labels.first.text"/>
+                    <string value="(5,7)"/>
+                </equals>
+            </conditions>
+            <trigger>
+                <success/>
+            </trigger>
+        </event>
+        <event settedUpInitially="true">
+            <conditions glue="and">
+                <inside objectId="robot1" regionId="(6,0)"/>
+                <greater>
+                    <objectState object="robot1.display.labels.size"/>
+                    <int value="0"/>
+                </greater>
+                <not>
+                    <equals>
+                        <objectState object="robot1.display.labels.first.text"/>
+                        <string value="(6,0)"/>
+                    </equals>
+                </not>
+            </conditions>
+            <trigger>
+                <fail message="cheating detected"/>
+            </trigger>
+        </event>
+        <event settedUpInitially="true">
+            <conditions glue="and">
+                <inside objectId="robot1" regionId="(6,0)"/>
+                <greater>
+                    <objectState object="robot1.display.labels.size"/>
+                    <int value="0"/>
+                </greater>
+                <equals>
+                    <objectState object="robot1.display.labels.first.text"/>
+                    <string value="(6,0)"/>
+                </equals>
+            </conditions>
+            <trigger>
+                <success/>
+            </trigger>
+        </event>
+        <event settedUpInitially="true">
+            <conditions glue="and">
+                <inside objectId="robot1" regionId="(6,1)"/>
+                <greater>
+                    <objectState object="robot1.display.labels.size"/>
+                    <int value="0"/>
+                </greater>
+                <not>
+                    <equals>
+                        <objectState object="robot1.display.labels.first.text"/>
+                        <string value="(6,1)"/>
+                    </equals>
+                </not>
+            </conditions>
+            <trigger>
+                <fail message="cheating detected"/>
+            </trigger>
+        </event>
+        <event settedUpInitially="true">
+            <conditions glue="and">
+                <inside objectId="robot1" regionId="(6,1)"/>
+                <greater>
+                    <objectState object="robot1.display.labels.size"/>
+                    <int value="0"/>
+                </greater>
+                <equals>
+                    <objectState object="robot1.display.labels.first.text"/>
+                    <string value="(6,1)"/>
+                </equals>
+            </conditions>
+            <trigger>
+                <success/>
+            </trigger>
+        </event>
+        <event settedUpInitially="true">
+            <conditions glue="and">
+                <inside objectId="robot1" regionId="(6,2)"/>
+                <greater>
+                    <objectState object="robot1.display.labels.size"/>
+                    <int value="0"/>
+                </greater>
+                <not>
+                    <equals>
+                        <objectState object="robot1.display.labels.first.text"/>
+                        <string value="(6,2)"/>
+                    </equals>
+                </not>
+            </conditions>
+            <trigger>
+                <fail message="cheating detected"/>
+            </trigger>
+        </event>
+        <event settedUpInitially="true">
+            <conditions glue="and">
+                <inside objectId="robot1" regionId="(6,2)"/>
+                <greater>
+                    <objectState object="robot1.display.labels.size"/>
+                    <int value="0"/>
+                </greater>
+                <equals>
+                    <objectState object="robot1.display.labels.first.text"/>
+                    <string value="(6,2)"/>
+                </equals>
+            </conditions>
+            <trigger>
+                <success/>
+            </trigger>
+        </event>
+        <event settedUpInitially="true">
+            <conditions glue="and">
+                <inside objectId="robot1" regionId="(6,3)"/>
+                <greater>
+                    <objectState object="robot1.display.labels.size"/>
+                    <int value="0"/>
+                </greater>
+                <not>
+                    <equals>
+                        <objectState object="robot1.display.labels.first.text"/>
+                        <string value="(6,3)"/>
+                    </equals>
+                </not>
+            </conditions>
+            <trigger>
+                <fail message="cheating detected"/>
+            </trigger>
+        </event>
+        <event settedUpInitially="true">
+            <conditions glue="and">
+                <inside objectId="robot1" regionId="(6,3)"/>
+                <greater>
+                    <objectState object="robot1.display.labels.size"/>
+                    <int value="0"/>
+                </greater>
+                <equals>
+                    <objectState object="robot1.display.labels.first.text"/>
+                    <string value="(6,3)"/>
+                </equals>
+            </conditions>
+            <trigger>
+                <success/>
+            </trigger>
+        </event>
+        <event settedUpInitially="true">
+            <conditions glue="and">
+                <inside objectId="robot1" regionId="(6,4)"/>
+                <greater>
+                    <objectState object="robot1.display.labels.size"/>
+                    <int value="0"/>
+                </greater>
+                <not>
+                    <equals>
+                        <objectState object="robot1.display.labels.first.text"/>
+                        <string value="(6,4)"/>
+                    </equals>
+                </not>
+            </conditions>
+            <trigger>
+                <fail message="cheating detected"/>
+            </trigger>
+        </event>
+        <event settedUpInitially="true">
+            <conditions glue="and">
+                <inside objectId="robot1" regionId="(6,4)"/>
+                <greater>
+                    <objectState object="robot1.display.labels.size"/>
+                    <int value="0"/>
+                </greater>
+                <equals>
+                    <objectState object="robot1.display.labels.first.text"/>
+                    <string value="(6,4)"/>
+                </equals>
+            </conditions>
+            <trigger>
+                <success/>
+            </trigger>
+        </event>
+        <event settedUpInitially="true">
+            <conditions glue="and">
+                <inside objectId="robot1" regionId="(6,5)"/>
+                <greater>
+                    <objectState object="robot1.display.labels.size"/>
+                    <int value="0"/>
+                </greater>
+                <not>
+                    <equals>
+                        <objectState object="robot1.display.labels.first.text"/>
+                        <string value="(6,5)"/>
+                    </equals>
+                </not>
+            </conditions>
+            <trigger>
+                <fail message="cheating detected"/>
+            </trigger>
+        </event>
+        <event settedUpInitially="true">
+            <conditions glue="and">
+                <inside objectId="robot1" regionId="(6,5)"/>
+                <greater>
+                    <objectState object="robot1.display.labels.size"/>
+                    <int value="0"/>
+                </greater>
+                <equals>
+                    <objectState object="robot1.display.labels.first.text"/>
+                    <string value="(6,5)"/>
+                </equals>
+            </conditions>
+            <trigger>
+                <success/>
+            </trigger>
+        </event>
+        <event settedUpInitially="true">
+            <conditions glue="and">
+                <inside objectId="robot1" regionId="(6,6)"/>
+                <greater>
+                    <objectState object="robot1.display.labels.size"/>
+                    <int value="0"/>
+                </greater>
+                <not>
+                    <equals>
+                        <objectState object="robot1.display.labels.first.text"/>
+                        <string value="(6,6)"/>
+                    </equals>
+                </not>
+            </conditions>
+            <trigger>
+                <fail message="cheating detected"/>
+            </trigger>
+        </event>
+        <event settedUpInitially="true">
+            <conditions glue="and">
+                <inside objectId="robot1" regionId="(6,6)"/>
+                <greater>
+                    <objectState object="robot1.display.labels.size"/>
+                    <int value="0"/>
+                </greater>
+                <equals>
+                    <objectState object="robot1.display.labels.first.text"/>
+                    <string value="(6,6)"/>
+                </equals>
+            </conditions>
+            <trigger>
+                <success/>
+            </trigger>
+        </event>
+        <event settedUpInitially="true">
+            <conditions glue="and">
+                <inside objectId="robot1" regionId="(6,7)"/>
+                <greater>
+                    <objectState object="robot1.display.labels.size"/>
+                    <int value="0"/>
+                </greater>
+                <not>
+                    <equals>
+                        <objectState object="robot1.display.labels.first.text"/>
+                        <string value="(6,7)"/>
+                    </equals>
+                </not>
+            </conditions>
+            <trigger>
+                <fail message="cheating detected"/>
+            </trigger>
+        </event>
+        <event settedUpInitially="true">
+            <conditions glue="and">
+                <inside objectId="robot1" regionId="(6,7)"/>
+                <greater>
+                    <objectState object="robot1.display.labels.size"/>
+                    <int value="0"/>
+                </greater>
+                <equals>
+                    <objectState object="robot1.display.labels.first.text"/>
+                    <string value="(6,7)"/>
+                </equals>
+            </conditions>
+            <trigger>
+                <success/>
+            </trigger>
+        </event>
+        <event settedUpInitially="true">
+            <conditions glue="and">
+                <inside objectId="robot1" regionId="(7,0)"/>
+                <greater>
+                    <objectState object="robot1.display.labels.size"/>
+                    <int value="0"/>
+                </greater>
+                <not>
+                    <equals>
+                        <objectState object="robot1.display.labels.first.text"/>
+                        <string value="(7,0)"/>
+                    </equals>
+                </not>
+            </conditions>
+            <trigger>
+                <fail message="cheating detected"/>
+            </trigger>
+        </event>
+        <event settedUpInitially="true">
+            <conditions glue="and">
+                <inside objectId="robot1" regionId="(7,0)"/>
+                <greater>
+                    <objectState object="robot1.display.labels.size"/>
+                    <int value="0"/>
+                </greater>
+                <equals>
+                    <objectState object="robot1.display.labels.first.text"/>
+                    <string value="(7,0)"/>
+                </equals>
+            </conditions>
+            <trigger>
+                <success/>
+            </trigger>
+        </event>
+        <event settedUpInitially="true">
+            <conditions glue="and">
+                <inside objectId="robot1" regionId="(7,1)"/>
+                <greater>
+                    <objectState object="robot1.display.labels.size"/>
+                    <int value="0"/>
+                </greater>
+                <not>
+                    <equals>
+                        <objectState object="robot1.display.labels.first.text"/>
+                        <string value="(7,1)"/>
+                    </equals>
+                </not>
+            </conditions>
+            <trigger>
+                <fail message="cheating detected"/>
+            </trigger>
+        </event>
+        <event settedUpInitially="true">
+            <conditions glue="and">
+                <inside objectId="robot1" regionId="(7,1)"/>
+                <greater>
+                    <objectState object="robot1.display.labels.size"/>
+                    <int value="0"/>
+                </greater>
+                <equals>
+                    <objectState object="robot1.display.labels.first.text"/>
+                    <string value="(7,1)"/>
+                </equals>
+            </conditions>
+            <trigger>
+                <success/>
+            </trigger>
+        </event>
+        <event settedUpInitially="true">
+            <conditions glue="and">
+                <inside objectId="robot1" regionId="(7,2)"/>
+                <greater>
+                    <objectState object="robot1.display.labels.size"/>
+                    <int value="0"/>
+                </greater>
+                <not>
+                    <equals>
+                        <objectState object="robot1.display.labels.first.text"/>
+                        <string value="(7,2)"/>
+                    </equals>
+                </not>
+            </conditions>
+            <trigger>
+                <fail message="cheating detected"/>
+            </trigger>
+        </event>
+        <event settedUpInitially="true">
+            <conditions glue="and">
+                <inside objectId="robot1" regionId="(7,2)"/>
+                <greater>
+                    <objectState object="robot1.display.labels.size"/>
+                    <int value="0"/>
+                </greater>
+                <equals>
+                    <objectState object="robot1.display.labels.first.text"/>
+                    <string value="(7,2)"/>
+                </equals>
+            </conditions>
+            <trigger>
+                <success/>
+            </trigger>
+        </event>
+        <event settedUpInitially="true">
+            <conditions glue="and">
+                <inside objectId="robot1" regionId="(7,3)"/>
+                <greater>
+                    <objectState object="robot1.display.labels.size"/>
+                    <int value="0"/>
+                </greater>
+                <not>
+                    <equals>
+                        <objectState object="robot1.display.labels.first.text"/>
+                        <string value="(7,3)"/>
+                    </equals>
+                </not>
+            </conditions>
+            <trigger>
+                <fail message="cheating detected"/>
+            </trigger>
+        </event>
+        <event settedUpInitially="true">
+            <conditions glue="and">
+                <inside objectId="robot1" regionId="(7,3)"/>
+                <greater>
+                    <objectState object="robot1.display.labels.size"/>
+                    <int value="0"/>
+                </greater>
+                <equals>
+                    <objectState object="robot1.display.labels.first.text"/>
+                    <string value="(7,3)"/>
+                </equals>
+            </conditions>
+            <trigger>
+                <success/>
+            </trigger>
+        </event>
+        <event settedUpInitially="true">
+            <conditions glue="and">
+                <inside objectId="robot1" regionId="(7,4)"/>
+                <greater>
+                    <objectState object="robot1.display.labels.size"/>
+                    <int value="0"/>
+                </greater>
+                <not>
+                    <equals>
+                        <objectState object="robot1.display.labels.first.text"/>
+                        <string value="(7,4)"/>
+                    </equals>
+                </not>
+            </conditions>
+            <trigger>
+                <fail message="cheating detected"/>
+            </trigger>
+        </event>
+        <event settedUpInitially="true">
+            <conditions glue="and">
+                <inside objectId="robot1" regionId="(7,4)"/>
+                <greater>
+                    <objectState object="robot1.display.labels.size"/>
+                    <int value="0"/>
+                </greater>
+                <equals>
+                    <objectState object="robot1.display.labels.first.text"/>
+                    <string value="(7,4)"/>
+                </equals>
+            </conditions>
+            <trigger>
+                <success/>
+            </trigger>
+        </event>
+        <event settedUpInitially="true">
+            <conditions glue="and">
+                <inside objectId="robot1" regionId="(7,5)"/>
+                <greater>
+                    <objectState object="robot1.display.labels.size"/>
+                    <int value="0"/>
+                </greater>
+                <not>
+                    <equals>
+                        <objectState object="robot1.display.labels.first.text"/>
+                        <string value="(7,5)"/>
+                    </equals>
+                </not>
+            </conditions>
+            <trigger>
+                <fail message="cheating detected"/>
+            </trigger>
+        </event>
+        <event settedUpInitially="true">
+            <conditions glue="and">
+                <inside objectId="robot1" regionId="(7,5)"/>
+                <greater>
+                    <objectState object="robot1.display.labels.size"/>
+                    <int value="0"/>
+                </greater>
+                <equals>
+                    <objectState object="robot1.display.labels.first.text"/>
+                    <string value="(7,5)"/>
+                </equals>
+            </conditions>
+            <trigger>
+                <success/>
+            </trigger>
+        </event>
+        <event settedUpInitially="true">
+            <conditions glue="and">
+                <inside objectId="robot1" regionId="(7,6)"/>
+                <greater>
+                    <objectState object="robot1.display.labels.size"/>
+                    <int value="0"/>
+                </greater>
+                <not>
+                    <equals>
+                        <objectState object="robot1.display.labels.first.text"/>
+                        <string value="(7,6)"/>
+                    </equals>
+                </not>
+            </conditions>
+            <trigger>
+                <fail message="cheating detected"/>
+            </trigger>
+        </event>
+        <event settedUpInitially="true">
+            <conditions glue="and">
+                <inside objectId="robot1" regionId="(7,6)"/>
+                <greater>
+                    <objectState object="robot1.display.labels.size"/>
+                    <int value="0"/>
+                </greater>
+                <equals>
+                    <objectState object="robot1.display.labels.first.text"/>
+                    <string value="(7,6)"/>
+                </equals>
+            </conditions>
+            <trigger>
+                <success/>
+            </trigger>
+        </event>
+        <event settedUpInitially="true">
+            <conditions glue="and">
+                <inside objectId="robot1" regionId="(7,7)"/>
+                <greater>
+                    <objectState object="robot1.display.labels.size"/>
+                    <int value="0"/>
+                </greater>
+                <not>
+                    <equals>
+                        <objectState object="robot1.display.labels.first.text"/>
+                        <string value="(7,7)"/>
+                    </equals>
+                </not>
+            </conditions>
+            <trigger>
+                <fail message="cheating detected"/>
+            </trigger>
+        </event>
+        <event settedUpInitially="true">
+            <conditions glue="and">
+                <inside objectId="robot1" regionId="(7,7)"/>
+                <greater>
+                    <objectState object="robot1.display.labels.size"/>
+                    <int value="0"/>
+                </greater>
+                <equals>
+                    <objectState object="robot1.display.labels.first.text"/>
+                    <string value="(7,7)"/>
+                </equals>
+            </conditions>
+            <trigger>
+                <success/>
+            </trigger>
+        </event>
+    </constraints>
+</root>
