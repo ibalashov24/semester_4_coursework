@@ -9,7 +9,7 @@ class TRIKMapWrapper():
 	CELL_WIDTH = 200
 	CELL_HEIGHT = 200
 	MAP_SIZE = 8 # cells
-	SOLVING_TIME_LIMIT = 360000
+	SOLVING_TIME_LIMIT = 360000 # ms
 	
 	LEFT_INFARED_SENSOR_PORT_NUMBER = "1" # Ax
 	RIGHT_INFARED_SENSOR_PORT_NUMBER = "2" # Ay
@@ -18,6 +18,8 @@ class TRIKMapWrapper():
 	RIGHT_WHEEL_PORT_NUMBER = "2" # My
 	
 	def _init_map_structure(self):
+		''' Initializes empty map file '''
+		
 		map = xml.Element("root")
 		
 		xml.SubElement(map, "world")
@@ -27,6 +29,8 @@ class TRIKMapWrapper():
 		return map
 		
 	def _init_world_block(self):
+		''' Initializes block /root/world in map xml structure '''
+		
 		world = self._map.find("world")
 		
 		xml.SubElement(world, "background", { "backgroundRect": "0:0:0:0" })
@@ -36,6 +40,8 @@ class TRIKMapWrapper():
 		xml.SubElement(world, "regions")
 		
 	def _init_sensors(self, sensors_block):
+		''' Initializes /root/robots/robot/sensors xml block '''
+	
 		sensors = [	
 					("-90", "A{0}".format(self.LEFT_INFARED_SENSOR_PORT_NUMBER), "TrikInfraredSensor"),
 					("90", "A{0}".format(self.RIGHT_INFARED_SENSOR_PORT_NUMBER), "TrikInfraredSensor"),
@@ -51,6 +57,8 @@ class TRIKMapWrapper():
 					})
 		
 	def _init_robots_block(self):
+		''' Initializes /root/robots xml block '''
+		
 		robots = self._map.find("robots")
 		robot = xml.SubElement(robots, "robot")
 		
@@ -79,6 +87,9 @@ class TRIKMapWrapper():
 		self._init_sensors(sensors)
 		
 	def _add_sensor_conformity_constraint(self, constraint_block):
+		''' Initializes constraint which checks that 
+			there is no excess sensors on the robot '''
+			
 		sensor_conformity = xml.SubElement(constraint_block, "constraint",
 			{
 				"checkOnce": "true",
@@ -99,6 +110,9 @@ class TRIKMapWrapper():
 		xml.SubElement(equal, "string", { "value": "undefined" })
 			
 	def _add_start_position_constraint(self, constraint_block):
+		''' Initializes constraint which checks that
+			the robot is in the start position at the beginning '''
+			
 		start_position_constraint = xml.SubElement(constraint_block, "constraint",
 			{
 				"checkOnce": "true",
@@ -111,6 +125,9 @@ class TRIKMapWrapper():
 			})
 			
 	def _add_cheating_constraint(self, constraint_block, x, y):
+		''' Add constraint which checks that 
+			the robot does not display the position in which it is not itself '''
+			
 		cheating_event = xml.SubElement(constraint_block, "event", { "settedUpInitially": "true" })
 		
 		cheating_trigger = xml.SubElement(cheating_event, "trigger")
@@ -133,6 +150,9 @@ class TRIKMapWrapper():
 		xml.SubElement(equals_condition, "string", { "value": "({0},{1})".format(x, y) })
 		
 	def _add_success_constraint(self, constraint_block, x, y):
+		''' Add constraint which checks that 
+			robot displayed correct coordinates '''
+			
 		success_event = xml.SubElement(constraint_block, "event", { "settedUpInitially": "true" })
 		
 		success_trigger = xml.SubElement(success_event, "trigger")
@@ -154,12 +174,16 @@ class TRIKMapWrapper():
 		xml.SubElement(equals_condition, "string", { "value": "({0},{1})".format(x, y) })
 		
 	def _add_solution_check_constraint(self, constraint_block):
+		''' Generates constraints for the constraints xml block '''
+		
 		for i in range(self.MAP_SIZE):
 			for j in range(self.MAP_SIZE):
 				self._add_cheating_constraint(constraint_block, j, i)
 				self._add_success_constraint(constraint_block, j, i)
 				
 	def _init_constraints_block(self):
+		''' Initializes /root/constraints xml block '''
+		
 		constraints = self._map.find("constraints")
 		
 		xml.SubElement(constraints, "timelimit", { "value": str(self.SOLVING_TIME_LIMIT) })
@@ -169,6 +193,8 @@ class TRIKMapWrapper():
 		self._add_solution_check_constraint(constraints)		
 		
 	def _init_regions(self):
+		''' Initializes /root/world/regions xml block '''
+		
 		regions = self._map.find("world/regions")
 		
 		for i in range(8):
@@ -201,6 +227,8 @@ class TRIKMapWrapper():
 			})
 		
 	def __init__(self): 
+		''' Initializes the new instance of TRIKMapWrapper '''
+		
 		self._map = self._init_map_structure()
 		
 		self._init_world_block()
@@ -210,8 +238,10 @@ class TRIKMapWrapper():
 		self._init_regions()
 
 	def add_wall(self, start_point, end_point):
+		''' Adds new wall with start_point=(x1, y1) and
+			end_point=(x2, y2) on the grid to the map '''
+			
 		walls_block = self._map.find("world/walls")
-		
 		xml.SubElement(walls_block, "wall",
 			{
 				"begin": "{0}:{1}".format(start_point[0], start_point[1]),
@@ -220,6 +250,9 @@ class TRIKMapWrapper():
 			})
 		
 	def set_start_point(self, point, direction):
+		''' Sets new start point for the robot
+			with given grid coordinate point=(x, y) and given direction '''
+	
 		coordinate_x = self.CELL_WIDTH * point[0]
 		coordinate_y = self.CELL_HEIGHT * point[1]
 	
@@ -238,6 +271,8 @@ class TRIKMapWrapper():
 		start_position.set("y", str(coordinate_y))
 		
 	def save_world(self, savePath):
+		''' Writes map to the file '''
+		
 		xml.ElementTree(self._map).write(savePath, encoding="utf8", xml_declaration=False)
 		
 map = TRIKMapWrapper()
