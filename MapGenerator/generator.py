@@ -79,7 +79,7 @@ class TRIKMapWrapper():
 		self._init_sensors(sensors)
 		
 	def _add_sensor_conformity_constraint(self, constraint_block):
-		sensors_conformity = xml.SubElement(constraint_block, "constraint",
+		sensor_conformity = xml.SubElement(constraint_block, "constraint",
 			{
 				"checkOnce": "true",
 				"failMessage": "У робота не должно быть лишних датчиков!"
@@ -87,16 +87,16 @@ class TRIKMapWrapper():
 		conditions = xml.SubElement(sensor_conformity, "conditions", { "glue": "and" })
 		
 		for port in range(1, 7):
-			if (str(port) != self.LEFT_INRARED_SENSOR_PORT_NUMBER) and
-					(str(port) != self.RIGHT_INRARED_SENSOR_PORT_NUMBER):
+			if (str(port) != self.LEFT_INFARED_SENSOR_PORT_NUMBER) and \
+					(str(port) != self.RIGHT_INFARED_SENSOR_PORT_NUMBER):
 				equal = xml.SubElement(conditions, "equal")
-				xml.SubElement(equal, "typeOf", { "objectId": "robot1.A{0}".format(port) }
-				xml.SubElement(equal, "string", { "value": "undefined" }
+				xml.SubElement(equal, "typeOf", { "objectId": "robot1.A{0}".format(port) })
+				xml.SubElement(equal, "string", { "value": "undefined" })
 
 		not_used_port = "2" if self.SONAR_SENSOR_PORT_NUMBER == "1" else "1"			
 		equal = xml.SubElement(conditions, "equal")
-		xml.SubElement(equal, "typeOf", { "objectId": "robot1.D{0}".format(not_used_port) }
-		xml.SubElement(equal, "string", { "value": "undefined" }
+		xml.SubElement(equal, "typeOf", { "objectId": "robot1.D{0}".format(not_used_port) })
+		xml.SubElement(equal, "string", { "value": "undefined" })
 			
 	def _add_start_position_constraint(self, constraint_block):
 		start_position_constraint = xml.SubElement(constraint_block, "constraint",
@@ -135,11 +135,11 @@ class TRIKMapWrapper():
 	def _add_success_constraint(self, constraint_block, x, y):
 		success_event = xml.SubElement(constraint_block, "event", { "settedUpInitially": "true" })
 		
-		success_trigger = xml.SubElement(cheating_event, "trigger")
+		success_trigger = xml.SubElement(success_event, "trigger")
 		xml.SubElement(success_trigger, "success")
 		
-		success_conditions = xml.SubElement(cheating_event, "conditions", { "glue": "and" })
-		xml.SubElement(cheating_conditions, "inside",
+		success_conditions = xml.SubElement(success_event, "conditions", { "glue": "and" })
+		xml.SubElement(success_conditions, "inside",
 			{
 				"objectId": "robot1",
 				"regionId": "({0},{1})".format(x, y)
@@ -153,7 +153,7 @@ class TRIKMapWrapper():
 		xml.SubElement(equals_condition, "objectState", { "object": "robot1.display.labels.first.text" })
 		xml.SubElement(equals_condition, "string", { "value": "({0},{1})".format(x, y) })
 		
-	def _add_solution_check_constaint(self, constraint_block):
+	def _add_solution_check_constraint(self, constraint_block):
 		for i in range(self.MAP_SIZE):
 			for j in range(self.MAP_SIZE):
 				self._add_cheating_constraint(constraint_block, j, i)
@@ -171,8 +171,8 @@ class TRIKMapWrapper():
 	def _init_regions(self):
 		regions = self._map.find("world/regions")
 		
-		for i in range(0, 7):
-			for j in range(0, 7):
+		for i in range(8):
+			for j in range(8):
 				xml.SubElement(regions, "region",
 					{ 
 						"type": "rectangle",
@@ -217,20 +217,20 @@ class TRIKMapWrapper():
 				"begin": "{0}:{1}".format(start_point[0], start_point[1]),
 				"end": "{0}:{1}".format(end_point[0], end_point[1]),
 				"id": "{{{0}}}".format(str(uuid.uuid1()))
-			}
+			})
 		
 	def set_start_point(self, point, direction):
 		coordinate_x = self.CELL_WIDTH * point[0]
-		coordinate_y = self.CELL_HEGHT * point[1]
+		coordinate_y = self.CELL_HEIGHT * point[1]
 	
-		start_point = self._map.find('world/regions[@id="start"]')
+		start_point = self._map.find("world/regions/region[@id='start']")
 		start_point.set("x", str(coordinate_x))
 		start_point.set("y", str(coordinate_y))
 		
-		robot = self._map.find("world/robots/robot")
+		robot = self._map.find("robots/robot")
 		robot.set("direction", str(direction))
 		# 25 is some kind of magic used in original maps from TRIK devs
-		robot.set("position", "{0}:{1}".format(coordinate_x - 25, coordinate_y - 25) 
+		robot.set("position", "{0}:{1}".format(coordinate_x - 25, coordinate_y - 25))
 		
 		start_position = robot.find("startPosition")
 		start_position.set("direction", str(direction))
@@ -241,6 +241,7 @@ class TRIKMapWrapper():
 		xml.ElementTree(self._map).write(savePath, encoding="utf8", xml_declaration=False)
 		
 map = TRIKMapWrapper()
+map.set_start_point((1, 2), 90)
 map.save_world("testMap.xml")
 		
 		
