@@ -1,6 +1,10 @@
 # -*- coding: utf-8 -*-
 import xml.etree.ElementTree as xml
 import uuid
+import random
+import math
+import argparse
+import sys
 
 class TRIKMapWrapper():
 	''' Instantiates the representation of the TRIK Studio 2D simulator world 
@@ -275,8 +279,223 @@ class TRIKMapWrapper():
 		
 		xml.ElementTree(self._map).write(savePath, encoding="utf8", xml_declaration=False)
 		
-map = TRIKMapWrapper()
+class ConnectivityComponent():
+	''' Represents connectivity component in the graph '''
+	
+	def __init__(self, id):
+		self._border_connection_prohibited = False
+		self.set_component_id(id)
+
+	def get_component_id(self):
+		return self._id
+		
+	def set_component_id(self, id):
+		self._id = id
+	
+	def is_border_connection_prohibited(self):
+		return self._is_border_connection_prohibited
+		
+	def prohibit_border_connection(self):
+		self._is_border_connection_prohibited = True
+				
+class MapGenerator():
+	MIN_RACK_NUMBER = 7
+	MAX_RACK_NUMBER = 15
+
+	MIN_WALLS_NUMBER = 30
+	MAX_WALLS_NUMBER = 45
+	
+	MAP_SIZE = 8 # cells
+	START_POINT_NUMBER = 30
+	
+	def _arrange_racks(self, grid, rack_number, component_number):
+		rack_set = set()
+		# Choosing rack left-top angle position
+		while (len(rack_set) < rack_number):
+			new_rack = (random.randint(0, self.MAP_SIZE - 1), random.randint(0, self.MAP_SIZE - 1))
+			rack_set.add(new_rack)
+			
+		racks = list(rack_set)
+		self._prohibited_start_points = set(racks)
+		
+		connectivity_components = [ConnectivityComponent(i) for i in range(1, rack_number + 1)]
+		# Reducing actual component number in order to make it equal to chosen component_number
+		actual_component_number = rack_number
+		while actual_component_number != component_number:
+			first_component_to_unite = random.randint(0, rack_number - 1)
+			second_component_to_unite = random.randint(0, rack_number - 1)
+			
+			if connectivity_components[first_component_to_unite].get_component_id() != \
+				connectivity_components[second_component_to_unite].get_component_id():
+				
+				--actual_component_number
+				connectivity_components[first_component_to_unite] = connectivity_components[second_component_to_unite]
+				
+		# Filling grid
+		for i in range(rack_number):
+			rack_component = connectivity_components[i]
+			rack = racks[i]
+			
+			grid[rack[1]][rack[0]] = rack_component
+			grid[rack[1] + 1][rack[0]] = rack_component
+			grid[rack[1]][rack[0] + 1] = rack_component
+			grid[rack[1] + 1][rack[0] + 1] = rack_component			
+			
+			# In order not to create closed area
+			if rack[0] == self.MAP_SIZE - 1 or rack[0] == 0 or rack[1] == self.MAP_SIZE - 1 or rack[1] == 0:
+				rack_component.prohibit_border_connection()	
+				
+		# Prohibiting wall connection for some connectivity components
+		# in order to create cyclic structures
+		for component in set(connectivity_components):
+			if not component.is_border_connection_prohibited() and random.random() == 1:
+				component.prohibit_border_connection()
+				
+		
+	def _generate_walls(self, grid, wall_number):
+		components = defaultdict(list)
+		for i in range(self.MAP_SIZE):
+			for j in range(self.MAP_SIZE):
+				component_id = grid[i][j].get_component_id()
+				if component_id != 0:
+					components[component_id].append((i, j))
+					
+		# Generating walls
+		walls = set()
+		for i in range(wall_number):
+			is_wall_built = False
+			while not is_wall_built:		
+				connectivity_component_cells = random.choise(components.values())
+				cell = random.choise(connectivity_component_cells)
+				
+				if cell[1] != self.MAP_SIZE and cell[1] != 0 and cell[0] != self.MAP_SIZE and cell[0] != 0:
+					candidates = \
+						[
+							(cell[0] + 1, cell[1]), 
+							(cell[0] - 1, cell[1]), 
+							(cell[0], cell[1] + 1), 
+							(cell[0], cell[1] - 1)
+						]
+					new_cell = random.choise(candidates)
+					
+					if (grid[new_cell[1]][new_cell[0]].get_component_id() == 0) and \
+							not ((cell[1] in (self.MAP_SIZE, 0) or cell[0] in (self.MAP_SIZE, 0)) and \
+							grid[cell[1]][cell[0]].is_border_connection_prohibited()):
+							
+						grid[new_cell[1]][new_cell[0]] = grid[new_cell[1]][new_cell[0]]
+						connectivity_component_cells.append(new_cell)
+						
+						walls.add((cell, new_cell))
+						
+						# In order to prevent closed areas creation
+						if cell[1] in (self.MAP_SIZE, 0) or cell[0] in (self.MAP_SIZE, 0):
+							grid[new_cell[1]][new_cell[0]].prohibit_border_connection()
+							
+						is_wall_built = True
+				
+		# Adding borders
+		for i in range(self.MAP_SIZE):
+			walls.add( ((i, 0), (i + 1, 0)) )
+			walls.add( ((i, self.MAP_SIZE), (i + 1, self.MAP_SIZE)) )
+			walls.add( ((0, i), (0, i + 1)) )
+			walls.add( ((self.MAP_SIZE, i), (self.MAP_SIZE, i + 1)) )
+			
+		self._walls = list(walls)
+
+	def _choose_start_points(self, grid):
+		start_points = set()
+		for i in range(self.START_POINT_NUMBER):
+			cell_x = random.randint(self.MAP_SIZE)
+			cell_y = random.randint(self.MAP_SIZE)
+			direction = random.choise((0, 90, -90, 180))
+			
+			if not cell in self._prohibited_start_points:
+				start_points.add((cell_x, cell_y, direction))
+				
+		self._start_points = list(start_points)
+				
+	def _init_grid(self):
+		grid = []
+		for i in range(self.MAP_SIZE):
+			for j in range(self.MAP_SIZE):
+				grid.append(ConnectivityComponent(0))
+				
+		return grid
+	
+	def _generate_map(self, rack_number, component_number, wall_number):
+		grid = self._init_grid()
+		
+		self._arrange_racks(grid, rack_number, component_number)
+		self._generate_walls(grid, wall_number)
+		
+		self._choose_start_points(grid)	
+
+	def __init__(self):
+		self._walls = []
+		self._start_points = []
+		self._prohibited_start_points = set()
+		
+		rack_number = random.randint(self.MIN_RACK_NUMBER, self.MAX_RACK_NUMBER)
+		connectivity_component_number = random.randint(self.MIN_RACK_NUMBER, rack_number)
+		wall_number = random.randint(self.MIN_WALLS_NUMBER, self.MAX_WALLS_NUMBER)
+		
+		self._generate_map(rack_number, connectivity_component_number, wall_number)
+
+	def get_walls(self):
+		for wall in self._walls:
+			yield wall		
+
+	def get_new_start_point(self):
+		for point in self._start_points:
+			yield point
+
+'''map = TRIKMapWrapper()
 map.set_start_point((1, 2), 90)
-map.save_world("testMap.xml")
+map.save_world("testMap.xml")'''
+
+class Program():
+	def _init_help(self):
+		parser = argparse.ArgumentParser(description="Generates TRIK Studio fields for the localization problem")
+		parser.add_argument("--single", action="store_true", help="if set, generates only 1 field (30 by default)")
+		
+		# argv[1] is the path
+		return parser.parse_args(' '.join(sys.argv[2:]))
+
+	def __init__(self):
+		self._parsed_arguments = self._init_help()
+		
+	def _is_multiple_start_point_requested():
+		return not self._parsed_arguments.single
+		
+	def _get_save_folder(self):
+		return sys.argv[1]
+		
+	def run(self):
+		generator = MapGenerator()
+		wrapper = TRIKMapWrapper()
+		
+		for wall in generator.get_walls():
+			wrapper.add_wall(wall[0], wall[1])
+			
+		if self._is_multiple_start_point_requested():
+			field_number = 0
+			for point in generator.get_new_start_point():
+				wrapper.set_start_point((point[0], point[1]), point[2])
+				wrapper.save_world("{0}/field_{1}.xml".format(self._get_save_folder(), field_number))
+				++field_number
+		else:
+			wrapper.set_start_point((point[0], point[1]), point[2])
+			wrapper.save_world("{0}/field.xml".format(self._get_save_folder()))
+			
+generator = Program()
+generator.run()
+	
+	
+	
+	
+	
+	
+	
+	
 		
 		
