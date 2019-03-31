@@ -5,9 +5,7 @@ import random
 import math
 import argparse
 import sys
-import copy
 import collections
-import time
 
 class TRIKMapWrapper():
 	''' Instantiates the representation of the TRIK Studio 2D simulator world 
@@ -24,6 +22,7 @@ class TRIKMapWrapper():
 	LEFT_WHEEL_PORT_NUMBER = "1" # Mx
 	RIGHT_WHEEL_PORT_NUMBER = "2" # My
 	
+	
 	def _init_map_structure(self):
 		''' Initializes empty map file '''
 		
@@ -35,6 +34,7 @@ class TRIKMapWrapper():
 		
 		return map
 		
+		
 	def _init_world_block(self):
 		''' Initializes block /root/world in map xml structure '''
 		
@@ -45,6 +45,7 @@ class TRIKMapWrapper():
 		xml.SubElement(world, "images")
 		xml.SubElement(world, "walls")
 		xml.SubElement(world, "regions")
+		
 		
 	def _init_sensors(self, sensors_block):
 		''' Initializes /root/robots/robot/sensors xml block '''
@@ -62,6 +63,7 @@ class TRIKMapWrapper():
 						"position": "25:25",
 						"port": "{0}###input######sensor{0}".format(port)
 					})
+					
 		
 	def _init_robots_block(self):
 		''' Initializes /root/robots xml block '''
@@ -93,6 +95,7 @@ class TRIKMapWrapper():
 		sensors = xml.SubElement(robot, "sensors")
 		self._init_sensors(sensors)
 		
+		
 	def _add_sensor_conformity_constraint(self, constraint_block):
 		''' Initializes constraint which checks that 
 			there is no excess sensors on the robot '''
@@ -115,6 +118,7 @@ class TRIKMapWrapper():
 		equal = xml.SubElement(conditions, "equals")
 		xml.SubElement(equal, "typeOf", { "objectId": "robot1.D{0}".format(not_used_port) })
 		xml.SubElement(equal, "string", { "value": "undefined" })
+		
 			
 	def _add_start_position_constraint(self, constraint_block):
 		''' Initializes constraint which checks that
@@ -130,6 +134,7 @@ class TRIKMapWrapper():
 				"objectId": "robot1",
 				"regionId": "start"
 			})
+			
 			
 	def _add_cheating_constraint(self, constraint_block, x, y):
 		''' Add constraint which checks that 
@@ -156,6 +161,7 @@ class TRIKMapWrapper():
 		xml.SubElement(equals_condition, "objectState", { "object": "robot1.display.labels.first.text" })
 		xml.SubElement(equals_condition, "string", { "value": "({0},{1})".format(x, y) })
 		
+		
 	def _add_success_constraint(self, constraint_block, x, y):
 		''' Add constraint which checks that 
 			robot displayed correct coordinates '''
@@ -180,6 +186,7 @@ class TRIKMapWrapper():
 		xml.SubElement(equals_condition, "objectState", { "object": "robot1.display.labels.first.text" })
 		xml.SubElement(equals_condition, "string", { "value": "({0},{1})".format(x, y) })
 		
+		
 	def _add_solution_check_constraint(self, constraint_block):
 		''' Generates constraints for the constraints xml block '''
 		
@@ -187,6 +194,7 @@ class TRIKMapWrapper():
 			for j in range(self.MAP_SIZE):
 				self._add_cheating_constraint(constraint_block, j, i)
 				self._add_success_constraint(constraint_block, j, i)
+				
 				
 	def _init_constraints_block(self):
 		''' Initializes /root/constraints xml block '''
@@ -198,6 +206,7 @@ class TRIKMapWrapper():
 		self._add_sensor_conformity_constraint(constraints)
 		self._add_start_position_constraint(constraints)
 		self._add_solution_check_constraint(constraints)		
+		
 		
 	def _init_regions(self):
 		''' Initializes /root/world/regions xml block '''
@@ -232,6 +241,7 @@ class TRIKMapWrapper():
 				"filled": "true", 
 				"color": "#0000ff"
 			})
+			
 		
 	def __init__(self): 
 		''' Initializes the new instance of TRIKMapWrapper '''
@@ -243,6 +253,7 @@ class TRIKMapWrapper():
 		self._init_constraints_block()
 		
 		self._init_regions()
+		
 
 	def add_wall(self, start_point, end_point):
 		''' Adds new wall with start_point=(x1, y1) and
@@ -255,6 +266,7 @@ class TRIKMapWrapper():
 				"end": "{0}:{1}".format(end_point[0] * self.CELL_HEIGHT, end_point[1] * self.CELL_WIDTH),
 				"id": "{{{0}}}".format(str(uuid.uuid1()))
 			})
+			
 		
 	def set_start_point(self, point, direction):
 		''' Sets new start point for the robot
@@ -278,10 +290,12 @@ class TRIKMapWrapper():
 		start_position.set("x", str(coordinate_x + self.CELL_WIDTH // 2))
 		start_position.set("y", str(coordinate_y + self.CELL_HEIGHT // 2))
 		
+		
 	def save_world(self, savePath):
 		''' Writes map to the file '''
 		
 		xml.ElementTree(self._map).write(savePath, encoding="utf8", xml_declaration=False)
+		
 		
 class ConnectivityComponent():
 	''' Represents connectivity component in the graph '''
@@ -289,29 +303,37 @@ class ConnectivityComponent():
 	def __init__(self, id):
 		self._component_connection_prohibited = False
 		self._id = id
+		
 
 	def get_component_id(self):
 		return self._id
 		
+		
 	def set_component_id(self, new_id):
 		self._id = new_id
+		
 		
 	def __hash__(self):
 		return self._id
 		
+		
 	def __eq__(self, other):
 		return self._id == other._id
+		
 		
 	def is_intercomponent_prohibited(self):
 		return self._component_connection_prohibited
 		
+		
 	def prohibit_connection_with_other_components(self):
 		self._component_connection_prohibited = True
+		
 		
 class MapRepresentation():
 	''' Represents map used by the map generator '''
 	
 	EMPTY_CELL_COMPONENT_ID = -1
+	
 	
 	def __init__(self, size):
 		self.grid = []
@@ -320,8 +342,11 @@ class MapRepresentation():
 		
 		for i in range(size + 1):
 			self.grid.append([self.EMPTY_CELL_COMPONENT_ID for j in range(size + 1)])		
+			
 				
 class MapGenerator():
+	''' Instantiates the generator of the map for the localization problem '''
+
 	MIN_RACK_NUMBER = 7
 	MAX_RACK_NUMBER = 10
 
@@ -329,9 +354,10 @@ class MapGenerator():
 	MAX_WALLS_NUMBER = 60
 	
 	MAP_SIZE = 8 # cells
-	START_POINT_NUMBER = 30
+	START_POINT_NUMBER = 30 # points
 	
 	CYCLIC_STRUCTURE_PROBABILITY = 0.3
+	
 	
 	def _merge_components(self, board, destination_component_id, source_component_id):
 		''' Merges 2 connectivity components '''
@@ -341,6 +367,7 @@ class MapGenerator():
 				component.set_component_id(destination_component_id)
 					
 		return board
+		
 		
 	def _merge_adjacent_components(self, board, racks):
 		''' Uniting components which contains adjacent cells '''
@@ -360,6 +387,7 @@ class MapGenerator():
 		
 		return board
 		
+		
 	def _reduce_actual_components_number(self, board, racks, target_component_number):
 		''' Reducing actual component number in order to 
 			make it equal to chosen component_number '''
@@ -369,9 +397,6 @@ class MapGenerator():
 			first_component_to_unite = random.randint(0, len(racks) - 1)
 			second_component_to_unite = random.randint(0, len(racks) - 1)
 			
-			print("Trying to unite: {0} and {1}. Fact: {2} and {3}".format(first_component_to_unite, second_component_to_unite, \
-				board.components[first_component_to_unite].get_component_id(), board.components[second_component_to_unite].get_component_id()))
-				
 			old_component = board.components[first_component_to_unite].get_component_id()
 			new_component = board.components[second_component_to_unite].get_component_id()	
 			if old_component != new_component:
@@ -379,6 +404,7 @@ class MapGenerator():
 				self._merge_components(board, old_component, new_component)
 				
 		return board
+		
 		
 	def _generate_racks_position(self, board, rack_number):
 		''' Selects rack positions on the grid '''
@@ -390,13 +416,13 @@ class MapGenerator():
 		while (len(rack_set) < rack_number):
 			new_rack = (random.randint(0, self.MAP_SIZE - 1), random.randint(0, self.MAP_SIZE - 1))
 			rack_set.add(new_rack)
-			
-			print("Rack ({0},{1})".format(new_rack[1], new_rack[0]))
+
 		racks = list(rack_set)
 		
 		self._prohibited_start_points = rack_set
 		
 		return racks
+		
 		
 	def _init_components(self, board, component_number):
 		''' Initializes connectivity components '''
@@ -409,15 +435,28 @@ class MapGenerator():
 		
 		return board
 		
+		
 	def _ensure_existance_of_cyclic_structures(self, board, racks):
 		''' Prohibiting connection with other components for some 
 			connectivity components in order to create cyclic structures '''
 
-		for component in board.components:
-			if random.random() < self.CYCLIC_STRUCTURE_PROBABILITY:
-				component.prohibit_connection_with_other_components()
+		cyclic_structures_number = 0
+		# Only components with id == index are independent 
+		# due to generation algorithm 
+		# "-1" is to prevent triggering for the border
+		for i in range(len(board.components) - 1):
+			if board.components[i].get_component_id() == i and \
+					random.random() < self.CYCLIC_STRUCTURE_PROBABILITY:
+					
+				board.components[i].prohibit_connection_with_other_components()
+				cyclic_structures_number += 1
+				
+		print("Generated {0} cyclic structures".format(cyclic_structures_number))
+		
 				
 	def _generate_border(self, board, board_id):
+		''' Generates border walls '''
+	
 		# Placing border
 		for i in range(self.MAP_SIZE + 1):
 			board.grid[0][i] = board_id
@@ -433,6 +472,7 @@ class MapGenerator():
 			
 		return board
 		
+		
 	def _fill_grid_with_components(self, board, racks):
 		''' Places connectivity components on the grid '''
 		
@@ -441,7 +481,7 @@ class MapGenerator():
 			rack_component = board.components[i].get_component_id()
 			rack = racks[i]
 			
-			print("Placing rack {0}:{1} to component {2}".format(rack[1], rack[0], rack_component))
+			# print("Placing rack {0}:{1} to component {2}".format(rack[1], rack[0], rack_component))
 			
 			shifts = ((0, 0), (1, 0), (0, 1), (1, 1))
 			node_shifts = \
@@ -462,6 +502,7 @@ class MapGenerator():
 		self._generate_border(board, rack_number)
 			
 		return board
+		
 					
 	def _arrange_racks(self, board, rack_number, component_number):
 		''' Arranges racks on the grid '''
@@ -478,12 +519,9 @@ class MapGenerator():
 		self._ensure_existance_of_cyclic_structures(board, racks)
 		
 		self._fill_grid_with_components(board, racks)
-						
-		print("Components after rack generation :")
-		for component in set(board.components):
-			print("{0} {1}".format(component.get_component_id(), component.is_intercomponent_prohibited()))
-				
+								
 		return racks
+		
 		
 	def _get_cells_by_components(self, board, rack_number):
 		''' Generates the dictionary of cells for each 
@@ -499,7 +537,10 @@ class MapGenerator():
 		
 		return components
 		
+		
 	def _count_free_points(self, board, used, start_y, start_x, new_wall):
+		''' Counts the number of points which are reachable from given start point '''
+		
 		used[start_y][start_x] = True
 		result = 1
 		
@@ -532,6 +573,7 @@ class MapGenerator():
 		
 		return result
 		
+		
 	def _are_closed_structures_exists(self, board, new_wall):
 		''' Checks if there any closed wall structures on the board '''
 	
@@ -554,16 +596,16 @@ class MapGenerator():
 				start_point[1], 
 				new_wall)
 		
-		print("New wall {0}, free points: {1}, expected: {2}".format(new_wall, free_points, expected_free_points))
-		
 		return expected_free_points != free_points
+		
 				
 	def _generate_walls(self, board, wall_number, rack_number):
+		''' Generates walls for the map with already
+			generated racks and connectivity components '''
+	
 		print("Generating {0} walls...".format(wall_number))
 	
 		components = self._get_cells_by_components(board, rack_number)		
-					
-		print("Components {0}".format(components))
 	
 		# Generating new walls
 		for i in range(wall_number):
@@ -581,7 +623,6 @@ class MapGenerator():
 				cell_id = board.grid[cell[0]][cell[1]]
 				
 				new_cell = random.choice(candidates)
-				print("New cell assumption: {0}".format(new_cell))
 				
 				new_cell_id = board.grid[new_cell[0]][new_cell[1]]
 				new_wall = (cell, new_cell)
@@ -596,19 +637,17 @@ class MapGenerator():
 						new_cell_id = board.grid[new_cell[0]][new_cell[1]]
 						components[new_cell_id].append(new_cell)
 						connectivity_component_cells.append(new_cell)
-				#		print("Cell is empty, adding")
-				#	else:
-				#		print("Cell is not empty")
-						
+
 					board.walls.add(new_wall)
 					is_wall_built = True
-				#else:
-				#	print("Wrong assumption")
 			
 		self._walls = list(board.walls)
+		
 
 	def _choose_start_points(self, restricted_cells):
-		print("Choosing start points...")
+		''' Generates start points for the robot on the generated map '''
+	
+		print("Choosing start {0} points...".format(self.START_POINT_NUMBER))
 	
 		start_points = set()
 		start_points_generated = 0
@@ -622,19 +661,28 @@ class MapGenerator():
 				start_points_generated += 1
 				
 		self._start_points = list(start_points)
+		
 				
 	def _init_grid(self):
+		''' Initializes empty grid describing corners '''
+	
 		return MapRepresentation(self.MAP_SIZE)
+		
 	
 	def _generate_map(self, rack_number, component_number, wall_number):
+		''' Generates the new map '''
+	
 		board = self._init_grid()
 		
 		racks = self._arrange_racks(board, rack_number, component_number)
 		self._generate_walls(board, wall_number, rack_number)
 		
 		self._choose_start_points(set(racks))	
+		
 
 	def __init__(self):
+		''' Initializes the map generator and generates map '''
+	
 		self._walls = []
 		self._start_points = []
 		self._prohibited_start_points = set()
@@ -644,14 +692,21 @@ class MapGenerator():
 		wall_number = random.randint(self.MIN_WALLS_NUMBER, self.MAX_WALLS_NUMBER)
 		
 		self._generate_map(rack_number, connectivity_component_number, wall_number)
+		
 
 	def get_walls(self):
+		''' Yields all walls on the generated map '''
+		
 		for wall in self._walls:
 			yield wall		
+			
 
 	def get_new_start_point(self):
+		''' Yields all start points on the generated map '''
+	
 		for point in self._start_points:
 			yield point
+			
 
 class Program():
 	def _init_help(self):
@@ -661,15 +716,19 @@ class Program():
 		parser.add_argument("--single", default=False, action="store_true", help="if set, generates only 1 field (30 by default)")
 		
 		return parser.parse_args(sys.argv[1:])
+		
 
 	def __init__(self):
 		self._parsed_arguments = self._init_help()
 		
+		
 	def _is_multiple_start_point_requested(self):
 		return not self._parsed_arguments.single
 		
+		
 	def _get_save_folder(self):
 		return self._parsed_arguments.path
+		
 		
 	def run(self):
 		generator = MapGenerator()
@@ -685,8 +744,10 @@ class Program():
 				wrapper.save_world("{0}/field_{1}.xml".format(self._get_save_folder(), field_number))
 				field_number += 1
 		else:
+			point = next(generator.get_new_start_point())
 			wrapper.set_start_point((point[0], point[1]), point[2])
 			wrapper.save_world("{0}/field.xml".format(self._get_save_folder()))
+			
 			
 generator = Program()
 generator.run()
