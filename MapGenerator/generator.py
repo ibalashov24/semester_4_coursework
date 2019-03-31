@@ -16,9 +16,9 @@ class TRIKMapWrapper():
 	MAP_SIZE = 8 # cells
 	SOLVING_TIME_LIMIT = 360000 # ms
 	
-	LEFT_INFARED_SENSOR_PORT_NUMBER = "1" # Ax
-	RIGHT_INFARED_SENSOR_PORT_NUMBER = "2" # Ay
-	SONAR_SENSOR_PORT_NUMBER = "1" # Dx
+	LEFT_IR_SENSOR = "1" # Ax
+	RIGHT_IR_SENSOR = "2" # Ay
+	SONAR_SENSOR = "1" # Dx
 	LEFT_WHEEL_PORT_NUMBER = "1" # Mx
 	RIGHT_WHEEL_PORT_NUMBER = "2" # My
 	
@@ -51,9 +51,21 @@ class TRIKMapWrapper():
 		''' Initializes /root/robots/robot/sensors xml block '''
 	
 		sensors = [	
-					("-90", "A{0}".format(self.LEFT_INFARED_SENSOR_PORT_NUMBER), "TrikInfraredSensor"),
-					("90", "A{0}".format(self.RIGHT_INFARED_SENSOR_PORT_NUMBER), "TrikInfraredSensor"),
-					("0", "D{0}".format(self.SONAR_SENSOR_PORT_NUMBER), "TrikSonarSensor")]
+					( \
+						"-90",
+						"A{0}###input###A{0}###sensorA{0}".format(self.LEFT_IR_SENSOR),
+						"TrikInfraredSensor"
+					),
+					(
+						"90",
+						"A{0}###input###A{0}###sensorA{0}".format(self.RIGHT_IR_SENSOR),
+						"TrikInfraredSensor"
+					),
+					(
+						"0",
+						"D{0}###input######sensorD{0}".format(self.SONAR_SENSOR),
+						"TrikSonarSensor"
+					)]
 	
 		for direction, port, sensorType in sensors:
 			xml.SubElement(sensors_block, "sensor",
@@ -61,7 +73,7 @@ class TRIKMapWrapper():
 						"direction": direction,
 						"type": "trik::robotModel::parts::{0}".format(sensorType),
 						"position": "25:25",
-						"port": "{0}###input######sensor{0}".format(port)
+						"port": port
 					})
 					
 		
@@ -74,7 +86,7 @@ class TRIKMapWrapper():
 		# Initial position is (0, 0) on the grid
 		robot.set("position", "{0}:{1}".format(self.CELL_WIDTH // 2 - 25, self.CELL_HEIGHT // 2 - 25))
 		robot.set("direction", "0")
-		robot.set("id", "trikRobot")
+		robot.set("id", "trikKitRobot")
 		
 		xml.SubElement(
 			robot, 
@@ -108,13 +120,13 @@ class TRIKMapWrapper():
 		conditions = xml.SubElement(sensor_conformity, "conditions", { "glue": "and" })
 		
 		for port in range(1, 7):
-			if (str(port) != self.LEFT_INFARED_SENSOR_PORT_NUMBER) and \
-					(str(port) != self.RIGHT_INFARED_SENSOR_PORT_NUMBER):
+			if (str(port) != self.LEFT_IR_SENSOR) and \
+					(str(port) != self.RIGHT_IR_SENSOR):
 				equal = xml.SubElement(conditions, "equals")
 				xml.SubElement(equal, "typeOf", { "objectId": "robot1.A{0}".format(port) })
 				xml.SubElement(equal, "string", { "value": "undefined" })
 
-		not_used_port = "2" if self.SONAR_SENSOR_PORT_NUMBER == "1" else "1"			
+		not_used_port = "2" if self.SONAR_SENSOR == "1" else "1"			
 		equal = xml.SubElement(conditions, "equals")
 		xml.SubElement(equal, "typeOf", { "objectId": "robot1.D{0}".format(not_used_port) })
 		xml.SubElement(equal, "string", { "value": "undefined" })
