@@ -5,6 +5,9 @@ import random
 import math
 import argparse
 import sys
+import copy
+import collections
+import time
 
 class TRIKMapWrapper():
 	''' Instantiates the representation of the TRIK Studio 2D simulator world 
@@ -104,12 +107,12 @@ class TRIKMapWrapper():
 		for port in range(1, 7):
 			if (str(port) != self.LEFT_INFARED_SENSOR_PORT_NUMBER) and \
 					(str(port) != self.RIGHT_INFARED_SENSOR_PORT_NUMBER):
-				equal = xml.SubElement(conditions, "equal")
+				equal = xml.SubElement(conditions, "equals")
 				xml.SubElement(equal, "typeOf", { "objectId": "robot1.A{0}".format(port) })
 				xml.SubElement(equal, "string", { "value": "undefined" })
 
 		not_used_port = "2" if self.SONAR_SENSOR_PORT_NUMBER == "1" else "1"			
-		equal = xml.SubElement(conditions, "equal")
+		equal = xml.SubElement(conditions, "equals")
 		xml.SubElement(equal, "typeOf", { "objectId": "robot1.D{0}".format(not_used_port) })
 		xml.SubElement(equal, "string", { "value": "undefined" })
 			
@@ -248,8 +251,8 @@ class TRIKMapWrapper():
 		walls_block = self._map.find("world/walls")
 		xml.SubElement(walls_block, "wall",
 			{
-				"begin": "{0}:{1}".format(start_point[0], start_point[1]),
-				"end": "{0}:{1}".format(end_point[0], end_point[1]),
+				"begin": "{0}:{1}".format(start_point[0] * self.CELL_HEIGHT, start_point[1] * self.CELL_WIDTH),
+				"end": "{0}:{1}".format(end_point[0] * self.CELL_HEIGHT, end_point[1] * self.CELL_WIDTH),
 				"id": "{{{0}}}".format(str(uuid.uuid1()))
 			})
 		
@@ -267,12 +270,13 @@ class TRIKMapWrapper():
 		robot = self._map.find("robots/robot")
 		robot.set("direction", str(direction))
 		# 25 is some kind of magic used in original maps from TRIK devs
-		robot.set("position", "{0}:{1}".format(coordinate_x - 25, coordinate_y - 25))
+		robot.set("position", "{0}:{1}".format( \
+			coordinate_x + self.CELL_WIDTH // 2 - 25, coordinate_y + self.CELL_HEIGHT // 2 - 25))
 		
 		start_position = robot.find("startPosition")
 		start_position.set("direction", str(direction))
-		start_position.set("x", str(coordinate_x))
-		start_position.set("y", str(coordinate_y))
+		start_position.set("x", str(coordinate_x + self.CELL_WIDTH // 2))
+		start_position.set("y", str(coordinate_y + self.CELL_HEIGHT // 2))
 		
 	def save_world(self, savePath):
 		''' Writes map to the file '''
@@ -283,152 +287,352 @@ class ConnectivityComponent():
 	''' Represents connectivity component in the graph '''
 	
 	def __init__(self, id):
-		self._border_connection_prohibited = False
-		self.set_component_id(id)
+		self._component_connection_prohibited = False
+		self._id = id
 
 	def get_component_id(self):
 		return self._id
 		
-	def set_component_id(self, id):
-		self._id = id
-	
-	def is_border_connection_prohibited(self):
-		return self._is_border_connection_prohibited
+	def set_component_id(self, new_id):
+		self._id = new_id
 		
-	def prohibit_border_connection(self):
-		self._is_border_connection_prohibited = True
+	def __hash__(self):
+		return self._id
+		
+	def __eq__(self, other):
+		return self._id == other._id
+		
+	def is_intercomponent_prohibited(self):
+		return self._component_connection_prohibited
+		
+	def prohibit_connection_with_other_components(self):
+		self._component_connection_prohibited = True
+		
+class MapRepresentation():
+	''' Represents map used by the map generator '''
+	
+	EMPTY_CELL_COMPONENT_ID = -1
+	
+	def __init__(self, size):
+		self.grid = []
+		self.components = [ ConnectivityComponent(self.EMPTY_CELL_COMPONENT_ID) ]
+		self.walls = set()
+		
+		for i in range(size + 1):
+			self.grid.append([self.EMPTY_CELL_COMPONENT_ID for j in range(size + 1)])		
 				
 class MapGenerator():
 	MIN_RACK_NUMBER = 7
-	MAX_RACK_NUMBER = 15
+	MAX_RACK_NUMBER = 10
 
-	MIN_WALLS_NUMBER = 30
-	MAX_WALLS_NUMBER = 45
+	MIN_WALLS_NUMBER = 45
+	MAX_WALLS_NUMBER = 60
 	
 	MAP_SIZE = 8 # cells
 	START_POINT_NUMBER = 30
 	
-	def _arrange_racks(self, grid, rack_number, component_number):
+	CYCLIC_STRUCTURE_PROBABILITY = 0.3
+	
+	def _merge_components(self, board, destination_component_id, source_component_id):
+		''' Merges 2 connectivity components '''
+		
+		for component in board.components:
+			if component.get_component_id() == source_component_id:
+				component.set_component_id(destination_component_id)
+					
+		return board
+		
+	def _merge_adjacent_components(self, board, racks):
+		''' Uniting components which contains adjacent cells '''
+		
+		rack_set = set(racks)	
+		for i in range(len(racks)):
+			rack = racks[i]
+			component = board.components[i].get_component_id()
+			
+			shifts = ((-1, 0), (0, -1), (-1, -1))
+			for shift in shifts:
+				adjacent_cell = (rack[0] + shift[0], rack[1] + shift[1])
+				if adjacent_cell in rack_set:
+					adj_cell_component = \
+						board.components[racks.index(adjacent_cell)].get_component_id()
+					self._merge_components(board, component, adj_cell_component)
+		
+		return board
+		
+	def _reduce_actual_components_number(self, board, racks, target_component_number):
+		''' Reducing actual component number in order to 
+			make it equal to chosen component_number '''
+			
+		actual_component_number = len(racks)
+		while actual_component_number > target_component_number:
+			first_component_to_unite = random.randint(0, len(racks) - 1)
+			second_component_to_unite = random.randint(0, len(racks) - 1)
+			
+			print("Trying to unite: {0} and {1}. Fact: {2} and {3}".format(first_component_to_unite, second_component_to_unite, \
+				board.components[first_component_to_unite].get_component_id(), board.components[second_component_to_unite].get_component_id()))
+				
+			old_component = board.components[first_component_to_unite].get_component_id()
+			new_component = board.components[second_component_to_unite].get_component_id()	
+			if old_component != new_component:
+				actual_component_number -= 1
+				self._merge_components(board, old_component, new_component)
+				
+		return board
+		
+	def _generate_racks_position(self, board, rack_number):
+		''' Selects rack positions on the grid '''
+	
+		print("Generating {0} racks...".format(rack_number))
+		
 		rack_set = set()
-		# Choosing rack left-top angle position
+		# Choosing left-top corner position of the rack
 		while (len(rack_set) < rack_number):
 			new_rack = (random.randint(0, self.MAP_SIZE - 1), random.randint(0, self.MAP_SIZE - 1))
 			rack_set.add(new_rack)
 			
+			print("Rack ({0},{1})".format(new_rack[1], new_rack[0]))
 		racks = list(rack_set)
-		self._prohibited_start_points = set(racks)
 		
-		connectivity_components = [ConnectivityComponent(i) for i in range(1, rack_number + 1)]
-		# Reducing actual component number in order to make it equal to chosen component_number
-		actual_component_number = rack_number
-		while actual_component_number != component_number:
-			first_component_to_unite = random.randint(0, rack_number - 1)
-			second_component_to_unite = random.randint(0, rack_number - 1)
+		self._prohibited_start_points = rack_set
+		
+		return racks
+		
+	def _init_components(self, board, component_number):
+		''' Initializes connectivity components '''
+		
+		print("Generating {0} connectivity components...".format(component_number))
+		
+		board.components = [ConnectivityComponent(i) for i in range(0, component_number)]
+		# Component for the border
+		board.components.append(ConnectivityComponent(component_number))
+		
+		return board
+		
+	def _ensure_existance_of_cyclic_structures(self, board, racks):
+		''' Prohibiting connection with other components for some 
+			connectivity components in order to create cyclic structures '''
+
+		for component in board.components:
+			if random.random() < self.CYCLIC_STRUCTURE_PROBABILITY:
+				component.prohibit_connection_with_other_components()
+				
+	def _generate_border(self, board, board_id):
+		# Placing border
+		for i in range(self.MAP_SIZE + 1):
+			board.grid[0][i] = board_id
+			board.grid[i][0] = board_id
+			board.grid[self.MAP_SIZE][i] = board_id
+			board.grid[i][self.MAP_SIZE] = board_id
 			
-			if connectivity_components[first_component_to_unite].get_component_id() != \
-				connectivity_components[second_component_to_unite].get_component_id():
-				
-				--actual_component_number
-				connectivity_components[first_component_to_unite] = connectivity_components[second_component_to_unite]
-				
-		# Filling grid
+		for i in range(self.MAP_SIZE):
+			board.walls.add(((0, i), (0, i + 1)))
+			board.walls.add(((i, 0), (i + 1, 0)))
+			board.walls.add(((i, self.MAP_SIZE), (i + 1, self.MAP_SIZE)))
+			board.walls.add(((self.MAP_SIZE, i), (self.MAP_SIZE, i + 1)))
+			
+		return board
+		
+	def _fill_grid_with_components(self, board, racks):
+		''' Places connectivity components on the grid '''
+		
+		rack_number = len(racks)
 		for i in range(rack_number):
-			rack_component = connectivity_components[i]
+			rack_component = board.components[i].get_component_id()
 			rack = racks[i]
 			
-			grid[rack[1]][rack[0]] = rack_component
-			grid[rack[1] + 1][rack[0]] = rack_component
-			grid[rack[1]][rack[0] + 1] = rack_component
-			grid[rack[1] + 1][rack[0] + 1] = rack_component			
+			print("Placing rack {0}:{1} to component {2}".format(rack[1], rack[0], rack_component))
 			
-			# In order not to create closed area
-			if rack[0] == self.MAP_SIZE - 1 or rack[0] == 0 or rack[1] == self.MAP_SIZE - 1 or rack[1] == 0:
-				rack_component.prohibit_border_connection()	
-				
-		# Prohibiting wall connection for some connectivity components
-		# in order to create cyclic structures
-		for component in set(connectivity_components):
-			if not component.is_border_connection_prohibited() and random.random() == 1:
-				component.prohibit_border_connection()
-				
+			shifts = ((0, 0), (1, 0), (0, 1), (1, 1))
+			node_shifts = \
+			(
+				((0, 1), (1, 1)),
+				((1, 0), (1, 1)),
+				((0, 0), (0, 1)),
+				((0, 0), (1, 0))
+			)
+			
+			for i in range(len(shifts)):
+				board.grid[rack[0] + shifts[i][0]][rack[1] + shifts[i][1]] = rack_component
+				board.walls.add(( \
+						(rack[0] + node_shifts[i][0][0], rack[1] + node_shifts[i][0][1]), \
+						(rack[0] + node_shifts[i][1][0], rack[1] + node_shifts[i][1][1]) \
+					))
 		
-	def _generate_walls(self, grid, wall_number):
-		components = defaultdict(list)
-		for i in range(self.MAP_SIZE):
-			for j in range(self.MAP_SIZE):
-				component_id = grid[i][j].get_component_id()
-				if component_id != 0:
-					components[component_id].append((i, j))
+		self._generate_border(board, rack_number)
+			
+		return board
 					
-		# Generating walls
-		walls = set()
+	def _arrange_racks(self, board, rack_number, component_number):
+		''' Arranges racks on the grid '''
+	
+		racks = self._generate_racks_position(board, rack_number)
+		
+		# Generating component for each cell at the beginning
+		board = self._init_components(board, rack_number)
+		
+		self._merge_adjacent_components(board, racks)
+		
+		self._reduce_actual_components_number(board, racks, component_number)
+		
+		self._ensure_existance_of_cyclic_structures(board, racks)
+		
+		self._fill_grid_with_components(board, racks)
+						
+		print("Components after rack generation :")
+		for component in set(board.components):
+			print("{0} {1}".format(component.get_component_id(), component.is_intercomponent_prohibited()))
+				
+		return racks
+		
+	def _get_cells_by_components(self, board, rack_number):
+		''' Generates the dictionary of cells for each 
+			connectivity component (except empty cells and the border) '''
+			
+		components = collections.defaultdict(list)
+		for i in range(1, self.MAP_SIZE):
+			for j in range(1, self.MAP_SIZE):
+				if board.grid[i][j] != rack_number and \
+						board.grid[i][j] != MapRepresentation.EMPTY_CELL_COMPONENT_ID:
+						
+					components[board.grid[i][j]].append((i, j))
+		
+		return components
+		
+	def _count_free_points(self, board, used, start_y, start_x, new_wall):
+		used[start_y][start_x] = True
+		result = 1
+		
+		shifts = ((0, 1), (1, 0), (-1, 0), (0, -1))
+		# Corresponding wall shifts
+		node_shifts = \
+			(
+				((0, 1), (1, 1)),
+				((1, 0), (1, 1)),
+				((0, 0), (0, 1)),
+				((0, 0), (1, 0))
+			)
+			
+		for i in range(len(shifts)):
+			coord_y = start_y + shifts[i][0]
+			coord_x = start_x + shifts[i][1]
+			
+			wall = ( \
+					(start_y + node_shifts[i][0][0], start_x + node_shifts[i][0][1]), \
+					(start_y + node_shifts[i][1][0], start_x + node_shifts[i][1][1]) \
+				   )
+			reversed_wall = (wall[1], wall[0])
+			
+			if not wall in board.walls and \
+					not reversed_wall in board.walls and \
+					wall != new_wall and \
+					reversed_wall != new_wall and \
+					not used[coord_y][coord_x]:
+				result += self._count_free_points(board, used, coord_y, coord_x, new_wall)
+		
+		return result
+		
+	def _are_closed_structures_exists(self, board, new_wall):
+		''' Checks if there any closed wall structures on the board '''
+	
+		used = []
+		start_point = (0, 0) # Cell coordinates
+		for i in range(self.MAP_SIZE):
+			used.append([])
+			for j in range(self.MAP_SIZE):
+				if not (i, j) in self._prohibited_start_points:
+					start_point = (i, j)
+					
+				used[i].append(False)
+				
+		expected_free_points = \
+			self.MAP_SIZE * self.MAP_SIZE - len(self._prohibited_start_points)
+		free_points = self._count_free_points(
+				board, 
+				used, 
+				start_point[0], 
+				start_point[1], 
+				new_wall)
+		
+		print("New wall {0}, free points: {1}, expected: {2}".format(new_wall, free_points, expected_free_points))
+		
+		return expected_free_points != free_points
+				
+	def _generate_walls(self, board, wall_number, rack_number):
+		print("Generating {0} walls...".format(wall_number))
+	
+		components = self._get_cells_by_components(board, rack_number)		
+					
+		print("Components {0}".format(components))
+	
+		# Generating new walls
 		for i in range(wall_number):
 			is_wall_built = False
 			while not is_wall_built:		
-				connectivity_component_cells = random.choise(components.values())
-				cell = random.choise(connectivity_component_cells)
+				connectivity_component_cells = random.choice(list(components.values()))
+				cell = random.choice(connectivity_component_cells)				
+				candidates = \
+					[
+						(cell[0] + 1, cell[1]), 
+						(cell[0] - 1, cell[1]), 
+						(cell[0], cell[1] + 1), 
+						(cell[0], cell[1] - 1)
+					]
+				cell_id = board.grid[cell[0]][cell[1]]
 				
-				if cell[1] != self.MAP_SIZE and cell[1] != 0 and cell[0] != self.MAP_SIZE and cell[0] != 0:
-					candidates = \
-						[
-							(cell[0] + 1, cell[1]), 
-							(cell[0] - 1, cell[1]), 
-							(cell[0], cell[1] + 1), 
-							(cell[0], cell[1] - 1)
-						]
-					new_cell = random.choise(candidates)
-					
-					if (grid[new_cell[1]][new_cell[0]].get_component_id() == 0) and \
-							not ((cell[1] in (self.MAP_SIZE, 0) or cell[0] in (self.MAP_SIZE, 0)) and \
-							grid[cell[1]][cell[0]].is_border_connection_prohibited()):
-							
-						grid[new_cell[1]][new_cell[0]] = grid[new_cell[1]][new_cell[0]]
+				new_cell = random.choice(candidates)
+				print("New cell assumption: {0}".format(new_cell))
+				
+				new_cell_id = board.grid[new_cell[0]][new_cell[1]]
+				new_wall = (cell, new_cell)
+			
+				if new_cell_id == MapRepresentation.EMPTY_CELL_COMPONENT_ID or \
+						not board.components[new_cell_id].is_intercomponent_prohibited() and \
+						not board.components[cell_id].is_intercomponent_prohibited() and \
+						not self._are_closed_structures_exists(board, new_wall):
+						
+					if new_cell_id == MapRepresentation.EMPTY_CELL_COMPONENT_ID:
+						board.grid[new_cell[0]][new_cell[1]] = board.grid[cell[0]][cell[1]]
+						new_cell_id = board.grid[new_cell[0]][new_cell[1]]
+						components[new_cell_id].append(new_cell)
 						connectivity_component_cells.append(new_cell)
+				#		print("Cell is empty, adding")
+				#	else:
+				#		print("Cell is not empty")
 						
-						walls.add((cell, new_cell))
-						
-						# In order to prevent closed areas creation
-						if cell[1] in (self.MAP_SIZE, 0) or cell[0] in (self.MAP_SIZE, 0):
-							grid[new_cell[1]][new_cell[0]].prohibit_border_connection()
-							
-						is_wall_built = True
-				
-		# Adding borders
-		for i in range(self.MAP_SIZE):
-			walls.add( ((i, 0), (i + 1, 0)) )
-			walls.add( ((i, self.MAP_SIZE), (i + 1, self.MAP_SIZE)) )
-			walls.add( ((0, i), (0, i + 1)) )
-			walls.add( ((self.MAP_SIZE, i), (self.MAP_SIZE, i + 1)) )
+					board.walls.add(new_wall)
+					is_wall_built = True
+				#else:
+				#	print("Wrong assumption")
 			
-		self._walls = list(walls)
+		self._walls = list(board.walls)
 
-	def _choose_start_points(self, grid):
+	def _choose_start_points(self, restricted_cells):
+		print("Choosing start points...")
+	
 		start_points = set()
-		for i in range(self.START_POINT_NUMBER):
-			cell_x = random.randint(self.MAP_SIZE)
-			cell_y = random.randint(self.MAP_SIZE)
-			direction = random.choise((0, 90, -90, 180))
+		start_points_generated = 0
+		while (start_points_generated < self.START_POINT_NUMBER):
+			cell_x = random.randint(0, self.MAP_SIZE - 1)
+			cell_y = random.randint(0, self.MAP_SIZE - 1)
+			direction = random.choice((0, 90, -90, 180))
 			
-			if not cell in self._prohibited_start_points:
+			if not (cell_x, cell_y) in restricted_cells:
 				start_points.add((cell_x, cell_y, direction))
+				start_points_generated += 1
 				
 		self._start_points = list(start_points)
 				
 	def _init_grid(self):
-		grid = []
-		for i in range(self.MAP_SIZE):
-			for j in range(self.MAP_SIZE):
-				grid.append(ConnectivityComponent(0))
-				
-		return grid
+		return MapRepresentation(self.MAP_SIZE)
 	
 	def _generate_map(self, rack_number, component_number, wall_number):
-		grid = self._init_grid()
+		board = self._init_grid()
 		
-		self._arrange_racks(grid, rack_number, component_number)
-		self._generate_walls(grid, wall_number)
+		racks = self._arrange_racks(board, rack_number, component_number)
+		self._generate_walls(board, wall_number, rack_number)
 		
-		self._choose_start_points(grid)	
+		self._choose_start_points(set(racks))	
 
 	def __init__(self):
 		self._walls = []
@@ -449,26 +653,23 @@ class MapGenerator():
 		for point in self._start_points:
 			yield point
 
-'''map = TRIKMapWrapper()
-map.set_start_point((1, 2), 90)
-map.save_world("testMap.xml")'''
-
 class Program():
 	def _init_help(self):
 		parser = argparse.ArgumentParser(description="Generates TRIK Studio fields for the localization problem")
-		parser.add_argument("--single", action="store_true", help="if set, generates only 1 field (30 by default)")
 		
-		# argv[1] is the path
-		return parser.parse_args(' '.join(sys.argv[2:]))
+		parser.add_argument("path", nargs="?", default=".", metavar="PATH", help="save path")
+		parser.add_argument("--single", default=False, action="store_true", help="if set, generates only 1 field (30 by default)")
+		
+		return parser.parse_args(sys.argv[1:])
 
 	def __init__(self):
 		self._parsed_arguments = self._init_help()
 		
-	def _is_multiple_start_point_requested():
+	def _is_multiple_start_point_requested(self):
 		return not self._parsed_arguments.single
 		
 	def _get_save_folder(self):
-		return sys.argv[1]
+		return self._parsed_arguments.path
 		
 	def run(self):
 		generator = MapGenerator()
@@ -482,7 +683,7 @@ class Program():
 			for point in generator.get_new_start_point():
 				wrapper.set_start_point((point[0], point[1]), point[2])
 				wrapper.save_world("{0}/field_{1}.xml".format(self._get_save_folder(), field_number))
-				++field_number
+				field_number += 1
 		else:
 			wrapper.set_start_point((point[0], point[1]), point[2])
 			wrapper.save_world("{0}/field.xml".format(self._get_save_folder()))
