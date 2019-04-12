@@ -17,3 +17,5 @@ function build_docker_image {
     echo "docker run checker:latest --name trik-checker -v trik-checker-sandbox:/trikStudio-checker/ 'apt update && apt install python3 -y'"
     echo "docker run checker:latest --name trik-checker -v trik-checker-sandbox:/trikStudio-checker/ 'cd trikStudio-checker && python3 solution_tester.py'"
 }
+
+build_docker_image
