@@ -15,6 +15,9 @@ class SolutionTester():
     SOLUTION_FILE_NAME = './bin/lastSavedCode.js'
     PROJECT_FILE_NAME = './examples/randomizer.qrs'
     REPORT_FILE_PATH = './reports/randomizer'
+    FIELD_GENERATOR_PATH = './generator.py'
+    
+    FIELD_SET_NUMBER = 5
     
     def __init__(self):
         self.test_number = 0
@@ -22,7 +25,21 @@ class SolutionTester():
     def _clean_directory(self, path):
         shutil.rmtree(path, ignore_errors=True)
         os.makedirs(path)
-    
+        
+    def _generate_fields(self):
+        '''
+        Generates field sets for the checker
+        '''
+        
+        for i in range(self.FIELD_SET_NUMBER):
+            print("Generating test set ", i, file=sys.stderr)
+            
+            test_set_path = self.TEST_FOLDER_NAME + "/test_set_{0}".format(i)
+            shutil.rmtree(test_set_path, ignore_errors=True)  
+            os.mkdirs(test_set_path)
+            
+            run(["python3", self.FIELD_GENERATOR_PATH, test_set_path])
+            
     def prepare_fields(self):
         '''
         Prepares fields (changes names, locations) for trikStudion-checker
@@ -32,6 +49,9 @@ class SolutionTester():
 
         # Removing default fields
         self._clean_directory(self.DEST_FIELD_PATH)
+        
+        print("Generating field {0} sets".format(self.FIELD_SET_NUMBER), file=sys.stderr)
+        self._generate_fields()
 
         print("Moving fields...", file=sys.stderr)
 
