@@ -17,7 +17,7 @@ class SolutionTester():
     def __init__(self):
         self.test_number = 0    
     
-    def _prepare_fields(self):
+    def prepare_fields(self):
         '''
         Prepares fields (changes names, locations) for trikStudion-checker
         '''
@@ -25,9 +25,12 @@ class SolutionTester():
         # List of all directories with test sets 
         all_dirs = filter(os.path.isdir, os.listdir(self.TEST_FOLDER_NAME))
         for directory in all_dirs:
+            print("Opening {0}".format(directory))
             fields = filter(os.path.isfile, os.listdir(directory))
             
             for item in fields:
+                print("Moving {0}".format(item))
+                
                 self.test_number += 1
                 
                 # Renaming with unique name in order to avoid collisions between test sets
@@ -41,20 +44,22 @@ class SolutionTester():
         Runs trikStudio-checker process
         '''
         
-        run(['{0} {1} {2}'.format(
-            self.CHECKER_PATH, 
+        print("Running checker: ")
+        run([self.CHECKER_PATH, 
             self.DEST_FIELD_PATH, 
-            self.SOLUTION_FILE_NAME)])
+            self.SOLUTION_FILE_NAME])
         
     def _interpret_results(self):
         '''
         Reads checker reports and counts the number of successful tests
         '''
         
+        print("Interpreting test results...")
         successful_tests = 0
         
         all_reports = filter(os.path.isfile, os.listdir(self.REPORT_FILE_PATH))
         for report in all_reports:
+            print("Interpreting {0}".format(report))
             if (report == "_randomizer"):
                 continue
             
