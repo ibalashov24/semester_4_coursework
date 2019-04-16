@@ -13,7 +13,7 @@ function prepare_docker_image {
     echo $volume_path
     
     echo "Downloading checker rig"
-    svn checkout https://github.com/ibalashov24/semester_4_coursework/trunk/MapGenerator $volume_path/MapGenerator
+    svn checkout https://github.com/ibalashov24/semester_4_coursework/branches/mapGenerator/MapGenerator $volume_path/MapGenerator
     svn checkout https://github.com/ibalashov24/semester_4_coursework/branches/travis-integration/TestScripts $volume_path/TestScripts
 
     cp -a "$volume_path/MapGenerator/." "$volume_path"

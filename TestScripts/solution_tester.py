@@ -9,13 +9,13 @@ from uuid import uuid1
 from subprocess import run
 
 class SolutionTester():
-    CHECKER_PATH = './bin/check-solution.sh'
-    DEST_FIELD_PATH = './fields/randomizer'
-    TEST_FOLDER_NAME = './test_sets'
-    SOLUTION_FILE_NAME = './bin/lastSavedCode.js'
-    PROJECT_FILE_NAME = './examples/randomizer.qrs'
-    REPORT_FILE_PATH = './reports/randomizer'
-    FIELD_GENERATOR_PATH = './generator.py'
+    CHECKER_PATH = '/trikStudio-checker/bin/check-solution.sh'
+    DEST_FIELD_PATH = '/trikStudio-checker/fields/randomizer'
+    TEST_FOLDER_NAME = '/trikStudio-checker/test_sets'
+    SOLUTION_FILE_NAME = '/trikStudio-checker/bin/lastSavedCode.js'
+    PROJECT_FILE_NAME = '/trikStudio-checker/examples/randomizer.qrs'
+    REPORT_FILE_PATH = '/trikStudio-checker/reports/randomizer'
+    FIELD_GENERATOR_PATH = '/trikStudio-checker/generator.py'
     
     FIELD_SET_NUMBER = 5
     
