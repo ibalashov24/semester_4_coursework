@@ -32,7 +32,7 @@ class SolutionTester():
         '''
         
         for i in range(self.FIELD_SET_NUMBER):
-            print("Generating test set ", i, file=sys.stderr)
+            print("Generating test set ", i)
             
             test_set_path = self.TEST_FOLDER_NAME + "/test_set_{0}".format(i)
             shutil.rmtree(test_set_path, ignore_errors=True)  
@@ -50,10 +50,10 @@ class SolutionTester():
         # Removing default fields
         self._clean_directory(self.DEST_FIELD_PATH)
         
-        print("Generating field {0} sets".format(self.FIELD_SET_NUMBER), file=sys.stderr)
+        print("Generating field {0} sets".format(self.FIELD_SET_NUMBER))
         self._generate_fields()
 
-        print("Moving fields...", file=sys.stderr)
+        print("Moving fields...")
 
         # List of all directories with test sets 
         all_dirs = os.listdir(self.TEST_FOLDER_NAME)
@@ -70,7 +70,7 @@ class SolutionTester():
                     dir_path + "/" + item, 
                     '{0}/{1}.xml'.format(self.DEST_FIELD_PATH, uuid1()))
 
-        print("Prepared {0} field".format(self.test_number), file=sys.stderr)
+        print("Prepared {0} field".format(self.test_number))
                 
  
     def _run_checker(self):
@@ -88,7 +88,7 @@ class SolutionTester():
         Reads checker reports and counts the number of successful tests
         '''
         
-        print("Interpreting test results...", file=sys.stderr)
+        print("Interpreting test results...")
         successful_tests = 0
         
         all_reports = os.listdir(self.REPORT_FILE_PATH)
@@ -100,7 +100,7 @@ class SolutionTester():
             report_file = open(self.REPORT_FILE_PATH + "/" + report, "r")
             report_deserialized = json.load(report_file)[0]
         
-            print("Field {0}; Status: {1}".format(report, report_deserialized["message"]), file=sys.stderr)
+            print("Field {0}; Status: {1}".format(report, report_deserialized["message"]))
             if (report_deserialized["message"] == "Задание выполнено!"):
                 successful_tests += 1
                 
@@ -112,7 +112,7 @@ class SolutionTester():
         '''
         Runs test procedure
         '''
-        
+
         self._run_checker()
         return self._interpret_results()
     
