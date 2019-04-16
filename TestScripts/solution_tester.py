@@ -15,7 +15,7 @@ class SolutionTester():
     SOLUTION_FILE_NAME = '/trikStudio-checker/bin/lastSavedCode.js'
     PROJECT_FILE_NAME = '/trikStudio-checker/examples/randomizer.qrs'
     REPORT_FILE_PATH = '/trikStudio-checker/reports/randomizer'
-    FIELD_GENERATOR_PATH = '/trikStudio-checker/generator.py'
+    FIELD_GENERATOR_PATH = '/trikStudio-checker/launch_scripts/generator.py'
     
     FIELD_SET_NUMBER = 5
     
