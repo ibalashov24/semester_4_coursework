@@ -24,10 +24,10 @@ function prepare_docker_image {
 }
 
 function run_testing {
-    command="bash -c 'apt update && apt install python3 -y && cd trikStudio-checker && python3 solution_tester.py'"
+    command="bash ./trikStudio-checker/start_testing.sh"
     
     echo "Launching Docker container"
-    docker -i run --name trik-checker2 -v "$volume_name":/trikStudio-checker/  checker:latest $command
+    docker run -i --name trik-checker2 -v $volume_name:/trikStudio-checker/ checker:latest $command
 }
 
 prepare_docker_image
