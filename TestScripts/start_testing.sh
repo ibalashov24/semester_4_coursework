@@ -3,4 +3,4 @@
 apt update
 apt install python3 -y
 
-python3 solution_tester.py
+python3 /trikStudio-checker/launch_scripts/solution_tester.py
