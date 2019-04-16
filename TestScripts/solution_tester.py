@@ -17,12 +17,20 @@ class SolutionTester():
     REPORT_FILE_PATH = '/trikStudio-checker/reports/randomizer'
     FIELD_GENERATOR_PATH = '/trikStudio-checker/launch_scripts/generator.py'
     
-    FIELD_SET_NUMBER = 5
+    FIELD_SET_NUMBER = 10
     
     def __init__(self):
+        '''
+        Initializes new instance of SolutionTester
+        '''
+        
         self.test_number = 0
 
     def _clean_directory(self, path):
+        '''
+        Removes all files from given directory
+        '''
+        
         shutil.rmtree(path, ignore_errors=True)
         os.makedirs(path)
         
@@ -38,7 +46,7 @@ class SolutionTester():
             shutil.rmtree(test_set_path, ignore_errors=True)  
             os.makedirs(test_set_path)
             
-            run(["python3", self.FIELD_GENERATOR_PATH, test_set_path])
+            run(["python3", self.FIELD_GENERATOR_PATH, test_set_path, "--single"])
             
     def prepare_fields(self):
         '''
