@@ -8,14 +8,14 @@ import sys
 from uuid import uuid1
 from subprocess import run
 
-import generator_module as MapGenerator
+import generator_import as MapGenerator
 
 class SolutionTester():
     CHECKER_PATH = '/trikStudio-checker/bin/check-solution.sh'
     DEST_FIELD_PATH = '/trikStudio-checker/fields/randomizer'
     SOLUTION_FILE_NAME = '/trikStudio-checker/bin/lastSavedCode.js'
     PROJECT_FILE_NAME = '/trikStudio-checker/examples/randomizer.qrs'
-    REPORT_FILE_PATH = '/trikStudio-checker/reports/randomizer'
+    REPORT_FILE_PATH = './reports/randomizer'
     FIELD_GENERATOR_PATH = '/trikStudio-checker/launch_scripts/generator.py'
     
     FIELD_SET_NUMBER = 10
@@ -43,8 +43,8 @@ class SolutionTester():
         for i in range(self.FIELD_SET_NUMBER):
             print("Generating test set ", i)
                     
-            generator = MapGenerator()
-            wrapper = TRIKMapWrapper()
+            generator = MapGenerator.MapGenerator()
+            wrapper = MapGenerator.TRIKMapWrapper()
         
             for wall in generator.get_walls():
                 wrapper.add_wall(wall[0], wall[1])
