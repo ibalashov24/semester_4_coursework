@@ -36,7 +36,7 @@ class SolutionTester():
             
             test_set_path = self.TEST_FOLDER_NAME + "/test_set_{0}".format(i)
             shutil.rmtree(test_set_path, ignore_errors=True)  
-            os.mkdirs(test_set_path)
+            os.makedirs(test_set_path)
             
             run(["python3", self.FIELD_GENERATOR_PATH, test_set_path])
             

@@ -5,7 +5,7 @@ volume_name=trik-checker-sandbox_2
 
 function prepare_docker_image {
     echo "Downloading and setting up a docker image"
-    docker build https://github.com/anastasiia-kornilova/epicbox-images.git#xenial:/epicbox-trik -f Dockerfile.xenial --label checker
+#    docker build https://github.com/anastasiia-kornilova/epicbox-images.git#xenial:/epicbox-trik -f Dockerfile.xenial --label checker
 
     docker volume create "$volume_name"
     volume_path=$(docker volume inspect $volume_name --format '{{.Mountpoint}}')
@@ -24,10 +24,10 @@ function prepare_docker_image {
 }
 
 function run_testing {
-    command='/bin/bash -c "apt update && apt install python3 -y && cd trikStudio-checker && python3 solution_tester.py"'
+    command="bash -c 'apt update && apt install python3 -y && cd trikStudio-checker && python3 solution_tester.py'"
     
     echo "Launching Docker container"
-    docker run --name trik-checker2 -v "$volume_name":/trikStudio-checker/  checker:latest $command
+    docker -i run --name trik-checker2 -v "$volume_name":/trikStudio-checker/  checker:latest $command
 }
 
 prepare_docker_image
