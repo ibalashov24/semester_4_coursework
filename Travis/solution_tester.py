@@ -123,6 +123,3 @@ successful_tests = tester.run()
 
 print("Total tests: ", tester.test_number)
 print("Successful: ", successful_tests)
-
-if (tester.test_number != successful_tests):
-    exit(1)
