@@ -6,6 +6,7 @@ import math
 import argparse
 import sys
 import collections
+from telnetlib import theNULL
 
 class TRIKMapWrapper():
 	''' Instantiates the representation of the TRIK Studio 2D simulator world 
@@ -346,7 +347,6 @@ class MapRepresentation():
 	
 	EMPTY_CELL_COMPONENT_ID = -1
 	
-	
 	def __init__(self, size):
 		self.grid = []
 		self.components = [ ConnectivityComponent(self.EMPTY_CELL_COMPONENT_ID) ]
@@ -419,7 +419,7 @@ class MapGenerator():
 		
 		
 	def _generate_racks_position(self, board, rack_number):
-		''' Selects rack positions on the grid '''
+		''' Selects rack positions on the  '''
 	
 		print("Generating {0} racks...".format(rack_number))
 		
@@ -466,15 +466,15 @@ class MapGenerator():
 		print("Generated {0} cyclic structures".format(cyclic_structures_number))
 		
 				
-	def _generate_border(self, board, board_id):
+	def _generate_border(self, board, border_id):
 		''' Generates border walls '''
 	
 		# Placing border
 		for i in range(self.MAP_SIZE + 1):
-			board.grid[0][i] = board_id
-			board.grid[i][0] = board_id
-			board.grid[self.MAP_SIZE][i] = board_id
-			board.grid[i][self.MAP_SIZE] = board_id
+			board.grid[0][i] = border_id
+			board.grid[i][0] = border_id
+			board.grid[self.MAP_SIZE][i] = border_id
+			board.grid[i][self.MAP_SIZE] = border_id
 			
 		for i in range(self.MAP_SIZE):
 			board.walls.add(((0, i), (0, i + 1)))
@@ -610,32 +610,52 @@ class MapGenerator():
 		
 		return expected_free_points != free_points
 		
+		
+	def _get_new_wall_candidate(self, board, components):
+		'''
+		Selecting new cell adjacent with one of the connectivity components
+		'''
+		
+		connectivity_component_cells = random.choice(list(components.values()))
+		cell = random.choice(connectivity_component_cells)				
+		candidates = \
+			[
+				(cell[0] + 1, cell[1]), 
+				(cell[0] - 1, cell[1]), 
+				(cell[0], cell[1] + 1), 
+				(cell[0], cell[1] - 1)
+			]
+			
+		new_cell = random.choice(candidates)
+		
+		return (cell, new_cell)
+
 				
 	def _generate_walls(self, board, wall_number, rack_number):
 		''' Generates walls for the map with already
 			generated racks and connectivity components '''
-	
+		
 		print("Generating {0} walls...".format(wall_number))
 	
-		components = self._get_cells_by_components(board, rack_number)		
+		components = self._get_cells_by_components(board, rack_number)
+		
+		# In order not to get infinite loop
+		available_cells = set()
+		for i in range(len(board.grid)):
+			for j in range(len(board.grid)):
+				if board.grid[i][j] == MapRepresentation.EMPTY_CELL_COMPONENT_ID:
+					available_cells.add((i, j))
 	
 		# Generating new walls
 		for i in range(wall_number):
 			is_wall_built = False
-			while not is_wall_built:		
-				connectivity_component_cells = random.choice(list(components.values()))
-				cell = random.choice(connectivity_component_cells)				
-				candidates = \
-					[
-						(cell[0] + 1, cell[1]), 
-						(cell[0] - 1, cell[1]), 
-						(cell[0], cell[1] + 1), 
-						(cell[0], cell[1] - 1)
-					]
+			while not is_wall_built and len(available_cells) != 0:		
+				cell, new_cell = self._get_new_wall_candidate(board, components)
+				
+				if not new_cell in available_cells:
+					continue
+					
 				cell_id = board.grid[cell[0]][cell[1]]
-				
-				new_cell = random.choice(candidates)
-				
 				new_cell_id = board.grid[new_cell[0]][new_cell[1]]
 				new_wall = (cell, new_cell)
 			
@@ -646,16 +666,18 @@ class MapGenerator():
 						
 					if new_cell_id == MapRepresentation.EMPTY_CELL_COMPONENT_ID:
 						board.grid[new_cell[0]][new_cell[1]] = board.grid[cell[0]][cell[1]]
+						
 						new_cell_id = board.grid[new_cell[0]][new_cell[1]]
 						components[new_cell_id].append(new_cell)
-						connectivity_component_cells.append(new_cell)
 
 					board.walls.add(new_wall)
 					is_wall_built = True
+					
+				available_cells.discard(new_cell)
 			
 		self._walls = list(board.walls)
 		
-
+		
 	def _choose_start_points(self, restricted_cells):
 		''' Generates start points for the robot on the generated map '''
 	
