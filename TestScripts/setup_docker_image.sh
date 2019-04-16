@@ -24,7 +24,7 @@ function prepare_docker_image {
 }
 
 function run_testing {
-    command="bash ./trikStudio-checker/start_testing.sh"
+    command="bash /trikStudio-checker/start_testing.sh"
     
     echo "Launching Docker container"
     docker run -i --name trik-checker2 -v $volume_name:/trikStudio-checker/launch_scripts checker:latest $command
