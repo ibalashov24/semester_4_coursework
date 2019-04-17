@@ -1,11 +1,7 @@
 # -*- coding: utf-8 -*-
 import os
-import os.path
 import json
 import shutil
-import sys
-
-from uuid import uuid1
 from subprocess import run
 
 import generator_import as MapGenerator
@@ -17,43 +13,7 @@ class SolutionTester():
     PROJECT_FILE_NAME = '/trikStudio-checker/examples/randomizer.qrs'
     REPORT_FILE_PATH = './reports/randomizer'
     FIELD_GENERATOR_PATH = '/trikStudio-checker/launch_scripts/generator.py'
-    
-    FIELD_SET_NUMBER = 10
-    
-    def __init__(self):
-        self.test_number = self.FIELD_SET_NUMBER
-        
-    def _clean_directory(self, path):
-       '''
-       Removes all files from given directory
-       '''
-        
-       shutil.rmtree(path, ignore_errors=True)
-       os.makedirs(path)
-    
-    def _generate_fields(self):
-        '''
-        Generates field sets for the checker
-        '''
-        
-        print("Generating fields...")
-        
-        self._clean_directory(self.DEST_FIELD_PATH)
-        
-        for i in range(self.FIELD_SET_NUMBER):
-            print("Generating test set ", i)
-                    
-            generator = MapGenerator.MapGenerator()
-            wrapper = MapGenerator.TRIKMapWrapper()
-        
-            for wall in generator.get_walls():
-                wrapper.add_wall(wall[0], wall[1])
-        
-            point = next(generator.get_new_start_point())
-            wrapper.set_start_point((point[0], point[1]), point[2])
-            
-            wrapper.save_world("{0}/{1}.xml".format(self.DEST_FIELD_PATH, uuid1()))
-             
+                 
     def _run_checker(self):
         ''' 
         Runs trikStudio-checker process
@@ -95,8 +55,7 @@ class SolutionTester():
         '''
         
         print("Beginning test process...")
-        
-	self._generate_fields()
+	    
         self._run_checker()
         return self._interpret_results()
     

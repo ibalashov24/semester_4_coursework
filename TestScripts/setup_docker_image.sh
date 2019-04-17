@@ -11,14 +11,20 @@ function prepare_docker_image {
     volume_path=$(sudo docker volume inspect $volume_name --format '{{.Mountpoint}}')
     
     echo "Downloading checker rig..."
-    sudo svn checkout https://github.com/ibalashov24/semester_4_coursework/branches/mapGenerator/MapGenerator $volume_path/MapGenerator
-    sudo svn checkout https://github.com/ibalashov24/semester_4_coursework/branches/travis-integration/TestScripts $volume_path/TestScripts
+    sudo svn checkout https://github.com/ibalashov24/semester_4_coursework/trunk/TestScripts $volume_path/TestScripts
 
-    sudo cp -a "$volume_path/MapGenerator/." "$volume_path"
     sudo cp -a "$volume_path/TestScripts/." "$volume_path"
     
     echo "Preparing user solution file..."
     sudo cp ./solution.js $volume_path/solution.js
+    
+    if  [ -d ./test_fields ] && ! [ `ls ./test_fields | wc -l` -eq 0 ] ; then.
+    <-->echo "Preparing user fields..."
+    <-->sudo cp -r ./test_fields/. $volume_path/custom_fields
+     else
+    <-->echo "Fields not found in ./test_fields !!!"
+    <-->exit 1
+    fi
 }
 
 function run_testing {
