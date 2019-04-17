@@ -13,11 +13,11 @@ class SolutionTester():
     FIELD_GENERATOR_PATH = '/trikStudio-checker/launch_scripts/generator.py'
 
     def __init__(self):
-	'''
-	Initializes new instance of SolutionTester()
-	'''
+        '''
+        Initializes new instance of SolutionTester()
+        '''
 
-	self.test_number = 0
+        self.test_number = 0
                  
     def _run_checker(self):
         ''' 
@@ -62,7 +62,7 @@ class SolutionTester():
         '''
         
         print("Beginning test process...")
-	    
+    
         self._run_checker()
         return self._interpret_results()
     
