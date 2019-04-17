@@ -11,6 +11,13 @@ class SolutionTester():
     PROJECT_FILE_NAME = '/trikStudio-checker/examples/randomizer.qrs'
     REPORT_FILE_PATH = './reports/randomizer'
     FIELD_GENERATOR_PATH = '/trikStudio-checker/launch_scripts/generator.py'
+
+    def __init__(self):
+	'''
+	Initializes new instance of SolutionTester()
+	'''
+
+	self.test_number = 0
                  
     def _run_checker(self):
         ''' 
@@ -35,6 +42,8 @@ class SolutionTester():
             print("Interpreting {0}".format(report))
             if (report == "_randomizer"):
                 continue
+
+	    self.test_number += 1
             
             report_file = open(self.REPORT_FILE_PATH + "/" + report, "r")
             report_deserialized = json.load(report_file)[0]

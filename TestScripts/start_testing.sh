@@ -29,9 +29,5 @@ for i in $( ls "$checker_fields" ); do
     touch $checker_fields/"${i%.*}.txt"
 done
 
-cat /trikStudio-checker/launch_scripts/solution.js
-
 # Running checking proccess
 python3 /trikStudio-checker/launch_scripts/solution_tester.py
-
-cat $(pwd)/checker-log.txt
