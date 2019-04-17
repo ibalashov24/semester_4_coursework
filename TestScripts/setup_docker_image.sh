@@ -1,28 +1,31 @@
 #!/bin/bash
 set -e
 
+volume_name=trik-checker-sandbox
+
 function prepare_docker_image {
-    echo "Setting up docker image"
-    docker build https://github.com/anastasiia-kornilova/epicbox-images.git#xenial:/epicbox-trik -f Dockerfile.xenial --label checker
+    echo "Downloading and setting up a docker image..."
+    sudo docker build -t checker https://github.com/anastasiia-kornilova/epicbox-images.git#xenial:/epicbox-trik -f Dockerfile.xenial
 
-    docker volume create trik-checker-sandbox_2
-    volume_path=$(docker volume inspect trik-checker-sandbox --format '{{.Mountpoint}}')
+    sudo docker volume create "$volume_name"
+    volume_path=$(sudo docker volume inspect $volume_name --format '{{.Mountpoint}}')
+    
+    echo "Downloading checker rig..."
+    sudo svn checkout https://github.com/ibalashov24/semester_4_coursework/branches/mapGenerator/MapGenerator $volume_path/MapGenerator
+    sudo svn checkout https://github.com/ibalashov24/semester_4_coursework/branches/travis-integration/TestScripts $volume_path/TestScripts
 
-    echo $volume_path
+    sudo cp -a "$volume_path/MapGenerator/." "$volume_path"
+    sudo cp -a "$volume_path/TestScripts/." "$volume_path"
     
-    echo "Setting up checker stuff"
-    svn checkout https://github.com/ibalashov24/semester_4_coursework/trunk/MapGenerator $volume_path
-    svn checkout https://github.com/ibalashov24/semester_4_coursework/trunk/TestScripts $volume_path
-    
-    echo "Copying problem solution"
-    cp ./solution.js $volume_path/solution.js
+    echo "Preparing user solution file..."
+    sudo cp ./solution.js $volume_path/solution.js
 }
 
 function run_testing {
-    command='apt update && apt install python3 -y && cd trikStudio-checker && python3 solution_tester.py'
+    command="bash /trikStudio-checker/launch_scripts/start_testing.sh"
     
     echo "Launching Docker container"
-    docker run checker:latest --name trik-checker2 -v trik-checker-sandbox_2:/trikStudio-checker/ "$command"
+    sudo docker run -i --name trik-checker -v $volume_name:/trikStudio-checker/launch_scripts checker $command
 }
 
 prepare_docker_image
