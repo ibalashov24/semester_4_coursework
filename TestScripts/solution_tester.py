@@ -7,7 +7,7 @@ from subprocess import run
 class SolutionTester():
     CHECKER_PATH = '/trikStudio-checker/bin/check-solution.sh'
     DEST_FIELD_PATH = '/trikStudio-checker/fields/randomizer'
-    SOLUTION_FILE_NAME = '/trikStudio-checker/bin/lastSavedCode.js'
+    SOLUTION_FILE_NAME = '/trikStudio-checker/launch_scripts/solution.js'
     PROJECT_FILE_NAME = '/trikStudio-checker/examples/randomizer.qrs'
     REPORT_FILE_PATH = './reports/randomizer'
     FIELD_GENERATOR_PATH = '/trikStudio-checker/launch_scripts/generator.py'
