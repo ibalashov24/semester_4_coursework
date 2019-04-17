@@ -16,7 +16,7 @@ class SolutionTester():
         '''
         Initializes new instance of SolutionTester()
         '''
-
+        
         self.test_number = 0
                  
     def _run_checker(self):
@@ -43,7 +43,7 @@ class SolutionTester():
             if (report == "_randomizer"):
                 continue
 
-	    self.test_number += 1
+            self.test_number += 1
             
             report_file = open(self.REPORT_FILE_PATH + "/" + report, "r")
             report_deserialized = json.load(report_file)[0]
