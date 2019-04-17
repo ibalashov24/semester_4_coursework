@@ -4,7 +4,7 @@ apt update
 apt install python3 -y
 
 # Cleaning example tester fields and movings user's own fields instead (if exists)
-new_fields="/trikStudio-checker/custom_fields"
+new_fields="/trikStudio-checker/launch_scripts/custom_fields"
 checker_fields="/trikStudio-checker/fields/randomizer"
 
 rm -rf $checker_fields/*
@@ -16,6 +16,18 @@ else
     echo "Fields not found!!! Stopping test proccess"
     exit 1
 fi
+
+# Generating some service files for the checker
+touch $checker_fields/"no-check-self"
+touch $checker_fields/"runmode"
+
+for i in $( ls "$checker_fields" ); do
+    if [[ $i != *.xml ]]; then
+	continue
+    fi
+    
+    touch $checker_fields/"${i%.*}.txt"
+done
 
 # Running checking proccess
 python3 /trikStudio-checker/launch_scripts/solution_tester.py
