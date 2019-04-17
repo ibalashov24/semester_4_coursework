@@ -17,5 +17,16 @@ else
     exit 1
 fi
 
+# Generating some service files for the checker
+touch $checker_fields/"no-check-self"
+for i in $( ls "$checker_fields" ); do
+    if [[ $i != *.xml ]]; then
+	continue
+    fi
+    
+    touch $checker_fields/"${i%.*}.txt"
+done
+
+
 # Running checking proccess
 python3 /trikStudio-checker/launch_scripts/solution_tester.py
