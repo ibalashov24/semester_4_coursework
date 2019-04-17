@@ -4,8 +4,6 @@ import json
 import shutil
 from subprocess import run
 
-import generator_import as MapGenerator
-
 class SolutionTester():
     CHECKER_PATH = '/trikStudio-checker/bin/check-solution.sh'
     DEST_FIELD_PATH = '/trikStudio-checker/fields/randomizer'
