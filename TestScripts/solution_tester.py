@@ -59,9 +59,7 @@ class SolutionTester():
         Runs trikStudio-checker process
         '''
         
-        self._generate_fields()
-        
-        print("Running checker: ", file=sys.stderr)
+        print("Running checker: ")
         run([self.CHECKER_PATH,  
              self.PROJECT_FILE_NAME,
              self.SOLUTION_FILE_NAME])
@@ -95,7 +93,10 @@ class SolutionTester():
         '''
         Runs test procedure
         '''
-
+        
+        print("Beginning test process...")
+        
+	self._generate_fields()
         self._run_checker()
         return self._interpret_results()
     
