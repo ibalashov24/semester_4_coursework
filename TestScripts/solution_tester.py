@@ -10,15 +10,7 @@ class SolutionTester():
     SOLUTION_FILE_NAME = '/trikStudio-checker/launch_scripts/solution.js'
     PROJECT_FILE_NAME = '/trikStudio-checker/examples/randomizer.qrs'
     REPORT_FILE_PATH = './reports/randomizer'
-    FIELD_GENERATOR_PATH = '/trikStudio-checker/launch_scripts/generator.py'
 
-    def __init__(self):
-        '''
-        Initializes new instance of SolutionTester()
-        '''
-
-        self.test_number = 0
-                 
     def _run_checker(self):
         ''' 
         Runs trikStudio-checker process
@@ -36,6 +28,7 @@ class SolutionTester():
         
         print("Interpreting test results...")
         successful_tests = 0
+        test_number = 0
         
         all_reports = os.listdir(self.REPORT_FILE_PATH)
         for report in all_reports:
@@ -43,7 +36,7 @@ class SolutionTester():
             if (report == "_randomizer"):
                 continue
 
-	    self.test_number += 1
+	    test_number += 1
             
             report_file = open(self.REPORT_FILE_PATH + "/" + report, "r")
             report_deserialized = json.load(report_file)[0]
@@ -68,10 +61,10 @@ class SolutionTester():
     
 
 tester = SolutionTester()
-successful_tests = tester.run()
+test_number, successful_tests = tester.run()
 
-print("Total tests: ", tester.test_number)
+print("Total tests: ", test_number)
 print("Successful: ", successful_tests)
 
-if (tester.test_number != successful_tests):
+if (test_number != successful_tests):
     exit(1)

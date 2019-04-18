@@ -10,11 +10,6 @@ function prepare_docker_image {
     sudo docker volume create "$volume_name"
     volume_path=$(sudo docker volume inspect $volume_name --format '{{.Mountpoint}}')
     
-    echo "Downloading checker rig..."
-    sudo svn checkout https://github.com/ibalashov24/semester_4_coursework/trunk/TestScripts $volume_path/TestScripts
-
-    sudo cp -a "$volume_path/TestScripts/." "$volume_path"
-    
     echo "Preparing user solution file..."
     sudo cp ./solution.js $volume_path/solution.js
     
@@ -28,7 +23,7 @@ function prepare_docker_image {
 }
 
 function run_testing {
-    command="bash /trikStudio-checker/launch_scripts/start_testing.sh"
+    command="bash /trikStudio-checker/start_testing.sh"
     
     echo "Launching Docker container"
     sudo docker run -i --name trik-checker -v $volume_name:/trikStudio-checker/launch_scripts checker $command

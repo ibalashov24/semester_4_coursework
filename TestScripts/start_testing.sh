@@ -1,8 +1,5 @@
 #/bin/bash
 
-apt update
-apt install python3 -y
-
 # Cleaning example tester fields and movings user's own fields instead (if exists)
 new_fields="/trikStudio-checker/launch_scripts/custom_fields"
 checker_fields="/trikStudio-checker/fields/randomizer"
