@@ -5,7 +5,7 @@ volume_name=trik-checker-sandbox
 
 function prepare_docker_image {
     echo "Downloading and setting up a docker image..."
-    sudo docker build -t checker https://github.com/anastasiia-kornilova/epicbox-images.git#xenial:/epicbox-trik -f Dockerfile.xenial
+    sudo docker build -t checker https://github.com/ibalashov24/epicbox-images.git#travis-checker:/epicbox-trik -f Dockerfile.xenial
 
     sudo docker volume create "$volume_name"
     volume_path=$(sudo docker volume inspect $volume_name --format '{{.Mountpoint}}')
