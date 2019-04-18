@@ -12,33 +12,49 @@ class Program():
 		
 
 	def __init__(self):
+		'''
+		Initializes new instance of Program()
+		'''
+		
 		self._parsed_arguments = self._init_help()
 		
 		
 	def _is_multiple_start_point_requested(self):
+		'''
+		Returns True if multiple point generation was required in the argument line
+		'''
+		
 		return not self._parsed_arguments.single
 		
 		
 	def _get_save_folder(self):
+		'''
+		Returns path to the result field folder
+		'''
+		
 		return self._parsed_arguments.path
 		
 		
 	def run(self):
+		'''
+		Launches generator
+		'''
+		
 		generator = MapGenerator()
 		wrapper = TRIKMapWrapper()
 		
 		for wall in generator.get_walls():
-			wrapper.add_wall(wall[0], wall[1])
+			wrapper.add_wall(*wall)
 			
 		if self._is_multiple_start_point_requested():
 			field_number = 0
-			for point in generator.get_new_start_point():
-				wrapper.set_start_point((point[0], point[1]), point[2])
+			for directed_point in generator.get_new_start_point():
+				wrapper.set_start_point(*directed_point)
 				wrapper.save_world("{0}/field_{1}.xml".format(self._get_save_folder(), field_number))
 				field_number += 1
 		else:
 			point = next(generator.get_new_start_point())
-			wrapper.set_start_point((point[0], point[1]), point[2])
+			wrapper.set_start_point(*directed_point)
 			wrapper.save_world("{0}/field.xml".format(self._get_save_folder()))
 			
 			
