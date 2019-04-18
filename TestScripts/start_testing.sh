@@ -27,4 +27,4 @@ for i in $( ls "$checker_fields" ); do
 done
 
 # Running checking proccess
-python3 /trikStudio-checker/launch_scripts/solution_tester.py
+python3 /trikStudio-checker/solution_tester.py
