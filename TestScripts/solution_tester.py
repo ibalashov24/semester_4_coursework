@@ -28,8 +28,8 @@ class SolutionTester():
             if (report == "_randomizer"):
                 continue
 
-        test_number += 1
-            
+            test_number += 1
+                
             report_file = open(report_path + "/" + report, "r")
             report_deserialized = json.load(report_file)[0]
         
@@ -38,7 +38,7 @@ class SolutionTester():
                 successful_tests += 1
                 
             report_file.close()
-        
+            
         return successful_tests
     
     def run(self):
