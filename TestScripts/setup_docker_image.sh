@@ -30,8 +30,11 @@ function prepare_docker_image {
 function run_testing {
     command="bash /trikStudio-checker/launch_scripts/TestScripts/start_testing.sh"
     
-    echo "Launching Docker container"
+    echo "Launching Docker containe...r"
     docker run -i --name trik-checker -v $volume_name:/trikStudio-checker/launch_scripts "$image_name" "$command"
+    
+    echo "Interpresting results..."
+    python3 ./solution_tester.py
 }
 
 prepare_docker_image
