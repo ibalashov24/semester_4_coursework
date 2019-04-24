@@ -3,7 +3,7 @@ set -euo pipefail
 
 volume_name=trik-checker-sandbox
 #image_name="ibalashov24/checker-a:latest"
-image_name="checker-2"
+image_name="checker"
 
 function prepare_docker_image {
     echo "Downloading and setting up a docker image..."
