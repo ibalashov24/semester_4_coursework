@@ -44,8 +44,6 @@ class SolutionTester():
         '''
         
         print("Beginning test process...")
-    
-#        self._run_checker()
         return self._interpret_results()
     
 
