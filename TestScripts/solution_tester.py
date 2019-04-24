@@ -2,7 +2,7 @@
 import os
 import json
 import shutil
-from subprocess import run
+import subprocess
 
 class SolutionTester():        
     def _interpret_results(self):
@@ -14,9 +14,12 @@ class SolutionTester():
         successful_tests = 0
         test_number = 0
         
-        volume_path = run(["docker volume inspect",
-                           "trik-studio-sandbox", 
-                           "--format '{{.Mountpoint}}"], stdout=subprocess.PIPE, text=True)
+        volume_path = subprocess.run(["docker volume inspect",
+                                      "trik-studio-sandbox", 
+                                    "--format '{{.Mountpoint}}"], 
+                                      stdout=subprocess.PIPE, 
+                                      encryption='ascii',
+                                      check=True)
         report_path = result.stdout
 
         all_reports = os.listdir(report_path)
@@ -25,7 +28,7 @@ class SolutionTester():
             if (report == "_randomizer"):
                 continue
 
-	    test_number += 1
+        test_number += 1
             
             report_file = open(report_path + "/" + report, "r")
             report_deserialized = json.load(report_file)[0]
