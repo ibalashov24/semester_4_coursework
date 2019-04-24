@@ -33,12 +33,12 @@ class Program():
 		if self._is_multiple_start_point_requested():
 			field_number = 0
 			for point in generator.get_new_start_point():
-				wrapper.set_start_point((point[0], point[1]), point[2])
+				wrapper.set_start_point(point[0], point[1])
 				wrapper.save_world("{0}/field_{1}.xml".format(self._get_save_folder(), field_number))
 				field_number += 1
 		else:
 			point = next(generator.get_new_start_point())
-			wrapper.set_start_point((point[0], point[1]), point[2])
+			wrapper.set_start_point(point[0], point[1])
 			wrapper.save_world("{0}/field.xml".format(self._get_save_folder()))
 			
 			
