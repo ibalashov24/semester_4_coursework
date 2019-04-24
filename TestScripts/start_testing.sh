@@ -1,5 +1,5 @@
 #!/bin/bash
-srt -euo pipefail
+set -euo pipefail
 
 # Cleaning example tester fields and movings user's own fields instead (if exists)
 new_fields="/trikStudio-checker/launch_scripts/custom_fields"
@@ -28,7 +28,7 @@ for i in $checker_fields; do
 done
 
 checker_path="/trikStudio-checker/bin/check-solution.sh"
-project_file="trikStudio-checker/examples/randomizer.qrs"
+project_file="/trikStudio-checker/examples/randomizer.qrs"
 solution_file="/trikStudio-checker/launch_scripts/solution.js"
 
 cd "/trikStudio-checker/launch_scripts"
