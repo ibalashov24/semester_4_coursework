@@ -2,10 +2,12 @@
 set -euo pipefail
 
 volume_name=trik-checker-sandbox
+image_name="ibalashov24/checker-a:latest"
 
 function prepare_docker_image {
     echo "Downloading and setting up a docker image..."
-    docker build -t checker https://github.com/ibalashov24/epicbox-images.git#travis-checker:/epicbox-trik -f Dockerfile.xenial
+#    docker build -t checker https://github.com/ibalashov24/epicbox-images.git#travis-checker:/epicbox-trik -f Dockerfile.xenial
+    docker pull ibalashov24/checker-a:latest
 
     docker volume create "$volume_name"
     volume_path=$(sudo docker volume inspect $volume_name --format '{{.Mountpoint}}')
@@ -26,7 +28,7 @@ function run_testing {
     command="bash /trikStudio-checker/start_testing.sh"
     
     echo "Launching Docker container"
-    docker run -i --name trik-checker -v $volume_name:/trikStudio-checker/launch_scripts checker "$command"
+    docker run -i --name "$image_name" -v $volume_name:/trikStudio-checker/launch_scripts checker "$command"
 }
 
 prepare_docker_image
