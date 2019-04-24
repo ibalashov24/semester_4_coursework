@@ -11,7 +11,10 @@ function prepare_docker_image {
 
     docker volume create "$volume_name"
     volume_path=$(sudo docker volume inspect $volume_name --format '{{.Mountpoint}}')
-    
+
+    echo "Downloading checker rig..."
+    git clone -b docker-image https://github.com/ibalashov24/semester_4_coursework.git "$volume_path"
+
     echo "Preparing user solution file..."
     cp ./solution.js "$volume_path"/solution.js
     
@@ -25,11 +28,12 @@ function prepare_docker_image {
 }
 
 function run_testing {
-    command="bash /trikStudio-checker/start_testing.sh"
+    command="bash /trikStudio-checker/launch_scripts/TestScripts/start_testing.sh"
     
     echo "Launching Docker container"
-    docker run -i --name "$image_name" -v $volume_name:/trikStudio-checker/launch_scripts checker "$command"
+    docker run -i --name trik-checker -v $volume_name:/trikStudio-checker/launch_scripts "$image_name" "$command"
 }
 
 prepare_docker_image
-exec run_testing
+run_testing
+exec
