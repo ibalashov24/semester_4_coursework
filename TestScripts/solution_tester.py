@@ -5,10 +5,10 @@ import shutil
 from subprocess import run
 
 class SolutionTester():
-    CHECKER_PATH = '/trikStudio-checker/bin/check-solution.sh'
+#    CHECKER_PATH = '/trikStudio-checker/bin/check-solution.sh'
     DEST_FIELD_PATH = '/trikStudio-checker/fields/randomizer'
-    SOLUTION_FILE_NAME = '/trikStudio-checker/launch_scripts/solution.js'
-    PROJECT_FILE_NAME = '/trikStudio-checker/examples/randomizer.qrs'
+#    SOLUTION_FILE_NAME = '/trikStudio-checker/launch_scripts/solution.js'
+#    PROJECT_FILE_NAME = '/trikStudio-checker/examples/randomizer.qrs'
     REPORT_FILE_PATH = './reports/randomizer'
 
     def _run_checker(self):
@@ -30,7 +30,12 @@ class SolutionTester():
         successful_tests = 0
         test_number = 0
         
-        all_reports = os.listdir(self.REPORT_FILE_PATH)
+        volume_path = run(["docker volume inspect",
+                           "trik-studio-sandbox", 
+                           "--format '{{.Mountpoint}}"], stdout=subprocess.PIPE, text=True)
+        report_path = result.stdout
+
+        all_reports = os.listdir(report_path)
         for report in all_reports:
             print("Interpreting {0}".format(report))
             if (report == "_randomizer"):
@@ -38,7 +43,7 @@ class SolutionTester():
 
 	    test_number += 1
             
-            report_file = open(self.REPORT_FILE_PATH + "/" + report, "r")
+            report_file = open(report_path + "/" + report, "r")
             report_deserialized = json.load(report_file)[0]
         
             print("Field {0}; Status: {1}".format(report, report_deserialized["message"]))
@@ -56,7 +61,7 @@ class SolutionTester():
         
         print("Beginning test process...")
     
-        self._run_checker()
+#        self._run_checker()
         return self._interpret_results()
     
 

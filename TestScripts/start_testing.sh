@@ -27,5 +27,12 @@ for i in $checker_fields; do
     touch $checker_fields/"${i%.*}.txt"
 done
 
+checker_path="/trikStudio-checker/bin/check-solution.sh"
+project_file="trikStudio-checker/examples/randomizer.qrs"
+solution_file="/trikStudio-checker/launch_scripts/solution.js"
+
+cd "/trikStudio-checker/launch_scripts"
+exec "$checker_path $project_file $solution_file"
+
 # Running checking proccess
-exec python3 /trikStudio-checker/solution_tester.py
+#exec python3 /trikStudio-checker/solution_tester.py
