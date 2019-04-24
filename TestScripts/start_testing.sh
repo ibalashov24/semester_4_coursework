@@ -1,12 +1,13 @@
-#/bin/bash
+#!/bin/bash
+srt -euo pipefail
 
 # Cleaning example tester fields and movings user's own fields instead (if exists)
 new_fields="/trikStudio-checker/launch_scripts/custom_fields"
 checker_fields="/trikStudio-checker/fields/randomizer"
 
-rm -rf $checker_fields/*
+rm -rf ${checker_fields/*}
 
-if  [ -d $new_fields ] && ! [ `ls $new_fields | wc -l` -eq 0 ] ; then
+if  [ -d $new_fields ] && ! [ "$(find $new_fields -not -path '*/\.*' -type f | wc -l)" -eq 0 ] ; then
     echo "User fields detected!"
     cp -r $new_fields/. $checker_fields
 else
@@ -18,7 +19,7 @@ fi
 touch $checker_fields/"no-check-self"
 touch $checker_fields/"runmode"
 
-for i in $( ls "$checker_fields" ); do
+for i in $checker_fields; do
     if [[ $i != *.xml ]]; then
 	continue
     fi
@@ -27,4 +28,4 @@ for i in $( ls "$checker_fields" ); do
 done
 
 # Running checking proccess
-python3 /trikStudio-checker/solution_tester.py
+exec python3 /trikStudio-checker/solution_tester.py
