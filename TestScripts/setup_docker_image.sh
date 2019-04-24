@@ -2,12 +2,13 @@
 set -euo pipefail
 
 volume_name=trik-checker-sandbox
-image_name="ibalashov24/checker-a:latest"
+#image_name="ibalashov24/checker-a:latest"
+image_name="checker-2"
 
 function prepare_docker_image {
     echo "Downloading and setting up a docker image..."
 #    docker build -t checker https://github.com/ibalashov24/epicbox-images.git#travis-checker:/epicbox-trik -f Dockerfile.xenial
-    docker pull ibalashov24/checker-a:latest
+#    docker pull ibalashov24/checker-a:latest
 
     docker volume create "$volume_name"
     volume_path=$(sudo docker volume inspect $volume_name --format '{{.Mountpoint}}')

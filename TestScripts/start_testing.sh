@@ -9,17 +9,26 @@ rm -rf "${checker_fields:-}"/*
 
 if  [ -d $new_fields ] && ! [ "$(find $new_fields -not -path '*/\.*' -type f | wc -l)" -eq 0 ] ; then
     echo "User fields detected!"
-    cp -r $new_fields/. $checker_fields
+    for open_map in $new_fields; do
+	cp $open_map "$checker_fields/${open_map%.*}_open.xml"
+    done
 else
     echo "Fields not found!!! Stopping test proccess"
     exit 1
 fi
 
+# Downloading closed fields from referee repo
+closed_maps_repo="https://github.com/ibalashov24/closed_maps_4_coursework.git"
+git clone $closed_maps_repo ./closed_maps
+for map in ./closed_maps/*; do
+    cp "$map" "$checker_fields/${map%.*}_closed.xml"
+done
+
 # Generating some service files for the checker
 touch $checker_fields/"no-check-self"
 touch $checker_fields/"runmode"
 
-for i in $checker_fields/*.xml; do
+for i in $checker_fields/"*.xml"; do
     touch "${i%.*}.txt"
 done
 
