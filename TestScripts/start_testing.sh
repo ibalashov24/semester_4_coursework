@@ -5,7 +5,7 @@ set -euo pipefail
 new_fields="/trikStudio-checker/launch_scripts/custom_fields"
 checker_fields="/trikStudio-checker/fields/randomizer"
 
-rm -rf ${checker_fields/*}
+rm -rf "${checker_fields:-}/*"
 
 if  [ -d $new_fields ] && ! [ "$(find $new_fields -not -path '*/\.*' -type f | wc -l)" -eq 0 ] ; then
     echo "User fields detected!"
@@ -32,7 +32,8 @@ project_file="/trikStudio-checker/examples/randomizer.qrs"
 solution_file="/trikStudio-checker/launch_scripts/solution.js"
 
 cd "/trikStudio-checker/launch_scripts"
-exec "$checker_path $project_file $solution_file"
+bash -c "$checker_path $project_file $solution_file"
+exec
 
 # Running checking proccess
 #exec python3 /trikStudio-checker/solution_tester.py
