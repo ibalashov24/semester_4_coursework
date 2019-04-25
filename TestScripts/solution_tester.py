@@ -14,13 +14,13 @@ class SolutionTester():
         successful_tests = 0
         test_number = 0
         
-        volume_path = subprocess.run(["docker volume inspect",
-                                      "trik-studio-sandbox", 
-                                    "--format '{{.Mountpoint}}"], 
+        volume_path = subprocess.run(["docker", "volume", "inspect",
+                                      "trik-checker-sandbox", 
+                                      "--format", "{{.Mountpoint}}"], 
                                       stdout=subprocess.PIPE, 
-                                      encoding='ascii',
-                                      check=True)
-        report_path = result.stdout
+                                      encoding='ascii')
+        report_path = volume_path.stdout[:-1] + "/reports/randomizer"
+        print(report_path)
 
         all_reports = os.listdir(report_path)
         for report in all_reports:
@@ -39,7 +39,7 @@ class SolutionTester():
                 
             report_file.close()
             
-        return successful_tests
+        return (test_number, successful_tests)
     
     def run(self):
         '''
