@@ -7,7 +7,7 @@ image_name="checker"
 
 function prepare_docker_image {
     echo "Downloading and setting up a docker image..."
-#    docker build -t checker https://github.com/ibalashov24/epicbox-images.git#travis-checker:/epicbox-trik -f Dockerfile.xenial
+    docker build -t checker https://github.com/ibalashov24/epicbox-images.git#travis-checker:/epicbox-trik -f Dockerfile.xenial
 #    docker pull ibalashov24/checker-a:latest
 
     docker volume create "$volume_name"
@@ -32,7 +32,7 @@ function run_testing {
     command="bash /trikStudio-checker/launch_scripts/TestScripts/start_testing.sh"
     
     echo "Launching Docker containe...r"
-    docker run -i --name trik-checker -v $volume_name:/trikStudio-checker/launch_scripts "$image_name" "$command"
+    docker run -i --name trik-checker -v $volume_name:/trikStudio-checker/launch_scripts $image_name $command
     
     echo "Interpresting results..."
     python3 ./solution_tester.py

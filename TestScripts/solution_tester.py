@@ -18,7 +18,7 @@ class SolutionTester():
                                       "trik-studio-sandbox", 
                                     "--format '{{.Mountpoint}}"], 
                                       stdout=subprocess.PIPE, 
-                                      encryption='ascii',
+                                      encoding='ascii',
                                       check=True)
         report_path = result.stdout
 
