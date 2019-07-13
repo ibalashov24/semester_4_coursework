@@ -1,1 +1,1 @@
-# semester_4_coursework
+# Integration of TRIK Studio solution checker with Travis CI 
